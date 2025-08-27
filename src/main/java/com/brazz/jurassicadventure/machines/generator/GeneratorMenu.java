@@ -33,7 +33,7 @@ public class GeneratorMenu extends AbstractContainerMenu {
             checkContainerSize(inv, 1);
 
             // Slot de combustível
-            this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 80, 53) {
+            this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), 0, 80, 35) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return ForgeHooks.getBurnTime(stack, null) > 0;

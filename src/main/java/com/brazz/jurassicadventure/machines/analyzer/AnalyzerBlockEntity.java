@@ -28,6 +28,8 @@ public class AnalyzerBlockEntity extends AllSettingsEntity {
         super(ModBlockEntities.ANALYZER_BLOCK_ENTITY.get(), pPos, pBlockState, 8, 100);
     }
 
+    
+
     // --- MÉTODOS OBRIGATÓRIOS DO MenuProvider ---
 
     @Nullable

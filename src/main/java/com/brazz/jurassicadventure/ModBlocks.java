@@ -14,6 +14,7 @@ import java.util.function.Supplier;
 
 import com.brazz.jurassicadventure.machines.analyzer.AnalyzerBlock;
 import com.brazz.jurassicadventure.machines.assembler.AssemblerBlock;
+import com.brazz.jurassicadventure.machines.cables.CableBlock;
 import com.brazz.jurassicadventure.machines.injector.InjectorBlock;
 import com.brazz.jurassicadventure.machines.sequencer.SequencerBlock;
 import com.brazz.jurassicadventure.machines.generator.GeneratorBlock;
@@ -30,6 +31,9 @@ public class ModBlocks {
 
         public static final RegistryObject<Block> GENERATOR = registerBlock("generator",
                         () -> new GeneratorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                                        .requiresCorrectToolForDrops()));
+        public static final RegistryObject<Block> CABLE = registerBlock("cable",
+                        () -> new CableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                                         .requiresCorrectToolForDrops()));
         public static final RegistryObject<Block> ANALYZER = registerBlock("analyzer",
                         () -> new AnalyzerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)

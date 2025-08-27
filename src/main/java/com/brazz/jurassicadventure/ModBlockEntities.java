@@ -2,6 +2,7 @@ package com.brazz.jurassicadventure;
 
 import com.brazz.jurassicadventure.machines.analyzer.AnalyzerBlockEntity;
 import com.brazz.jurassicadventure.machines.assembler.AssemblerBlockEntity;
+import com.brazz.jurassicadventure.machines.cables.CableBlockEntity;
 import com.brazz.jurassicadventure.machines.generator.GeneratorBlockEntity;
 import com.brazz.jurassicadventure.machines.injector.InjectorBlockEntity;
 import com.brazz.jurassicadventure.machines.sequencer.SequencerBlockEntity;
@@ -22,6 +23,14 @@ public class ModBlockEntities {
                                         () -> BlockEntityType.Builder
                                                         .<GeneratorBlockEntity>of(GeneratorBlockEntity::new,
                                                                         ModBlocks.GENERATOR.get())
+                                                        .build(null));
+
+
+        public static final RegistryObject<BlockEntityType<CableBlockEntity>> CABLE_BLOCK_ENTITY = BLOCK_ENTITIES
+                        .register("cable_block_entity",
+                                        () -> BlockEntityType.Builder
+                                                        .<CableBlockEntity>of(CableBlockEntity::new,
+                                                                        ModBlocks.CABLE.get())
                                                         .build(null));
 
         public static final RegistryObject<BlockEntityType<AnalyzerBlockEntity>> ANALYZER_BLOCK_ENTITY = BLOCK_ENTITIES
