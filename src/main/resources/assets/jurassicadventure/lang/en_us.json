@@ -1,0 +1,59 @@
+{
+  "item.jurassicadventure.dna_syringe": "Syringe with DNA",
+  "item.jurassicadventure.syringe": "Syringe",
+  "item.jurassicadventure.broken_syringe": "Broken Syringe",
+  "item.jurassicadventure.failed_syringe": "Failede Syringe",
+  "item.jurassicadventure.nutritional_syringe": "Nutritional Syringe",
+  "item.jurassicadventure.embryo_syringe": "Embryo Syringe",
+
+  "item.jurassicadventure.tube": "Tube",
+  "item.jurassicadventure.failed_tube": "Failed Tube",
+  "item.jurassicadventure.partial_genome_tube": "Partial Genome Tube",
+  "item.jurassicadventure.complete_genome_tube": "Complete Genome Tube",
+
+  "item.jurassicadventure.syringe_dna_cow": "Cow DNA",
+  "item.jurassicadventure.syringe_dna_chicken": "Chicken DNA",
+  "item.jurassicadventure.syringe_dna_pig": "Pig DNA",
+  "item.jurassicadventure.syringe_dna_mutton": "Mutton DNA",
+  "item.jurassicadventure.syringe_dna_frog": "Frog DNA",
+  "item.jurassicadventure.syringe_dna_fish": "Fish DNA",
+
+  "dino.jurassicadventure.rex": "Tyrannosaurus Rex",
+  "dino.jurassicadventure.velociraptor": "Velociraptor",
+  "dino.jurassicadventure.carnotaurus": "Carnotaurus",
+  "dino.jurassicadventure.spinosaurus": "Spinosaurus",
+  "dino.jurassicadventure.allosaurus": "Allosaurus",
+  "dino.jurassicadventure.yutyrannus": "Yutyrannus",
+  "dino.jurassicadventure.dilophosaurus": "Dilophosaurus",
+  "dino.jurassicadventure.megalania": "Megalania",
+  "dino.jurassicadventure.deinonychus": "Deinonychus",
+
+  "dino.jurassicadventure.triceratops": "Triceratops",
+  "dino.jurassicadventure.parasaurolophus": "Parasaurolophus",
+  "dino.jurassicadventure.stegosaurus": "Stegosaurus",
+  "dino.jurassicadventure.ankylosaurus": "Ankylosaurus",
+  "dino.jurassicadventure.gallimimus": "Gallimimus",
+  "dino.jurassicadventure.pachycephalosaurus": "Pachycephalosaurus",
+  "dino.jurassicadventure.brachiosaurus": "Brachiosaurus",
+  "dino.jurassicadventure.diplodocus": "Diplodocus",
+
+  "mob.minecraft.cow": "Cow",
+  "mob.minecraft.pig": "Pig",
+  "mob.minecraft.chicken": "Chicken",
+  "mob.minecraft.sheep": "Sheep",
+  "mob.minecraft.salmon": "Salmon",
+  "mob.jurassicadventure.river_frog": "River Frog",
+
+  "item.jurassicadventure.cooked_frog_meat": "Cooked Frog Meat",
+  "item.jurassicadventure.frog_meat": "Frog Meat",
+
+  "item.jurassicadventure.river_frog_spawn_egg": "Spawn River Frog",
+
+  "block.jurassicadventure.amber_ore": "Amber Ore",
+  "item.jurassicadventure.raw_amber": "Raw Amber",
+  
+  "block.jurassicadventure.analyzer": "DNA Extractor",
+  "block.jurassicadventure.sequencer": "DNA Sequencer",
+
+  "creativetab.jurassic_tab": "Jurassic Adventure"
+}

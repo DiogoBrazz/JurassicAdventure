@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "jurassicadventure:block/injector", "y": 180 },
+    "facing=east": { "model": "jurassicadventure:block/injector", "y": 270 },
+    "facing=south": { "model": "jurassicadventure:block/injector" },
+    "facing=west": { "model": "jurassicadventure:block/injector", "y": 90 }
+  }
+}

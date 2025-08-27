@@ -1,0 +1,56 @@
+{
+  "item.jurassicadventure.dna_syringe": "Seringa com DNA",
+  "item.jurassicadventure.syringe": "Seringa",
+  "item.jurassicadventure.broken_syringe": "Seringa Quebrada",
+  "item.jurassicadventure.failed_syringe": "Seringa com DNA Corrompido",
+
+  "item.jurassicadventure.tube": "Tubo de Ensaio",
+  "item.jurassicadventure.partial_genome_tube": "Tubo de Ensaio com Genoma Parcial",
+  "item.jurassicadventure.complete_genome_tube": "Tubo de Ensaio com Genoma Completo",
+
+  "item.jurassicadventure.syringe_dna_cow": "Vaca DNA",
+  "item.jurassicadventure.syringe_dna_chicken": "Galina DNA",
+  "item.jurassicadventure.syringe_dna_pig": "Porco DNA",
+  "item.jurassicadventure.syringe_dna_mutton": "Ovelha DNA",
+  "item.jurassicadventure.syringe_dna_frog": "Sapo do Rio DNA",
+  "item.jurassicadventure.syringe_dna_fish": "Salmão DNA",
+
+  "dino.jurassicadventure.rex": "Tiranossauro Rex",
+  "dino.jurassicadventure.velociraptor": "Velociraptor",
+  "dino.jurassicadventure.carnotaurus": "Carnotauro",
+  "dino.jurassicadventure.spinosaurus": "Espinossauro",
+  "dino.jurassicadventure.allosaurus": "Alossauro",
+  "dino.jurassicadventure.yutyrannus": "Yutiranus",
+  "dino.jurassicadventure.dilophosaurus": "Dilofossauro",
+  "dino.jurassicadventure.megalania": "Megalânia",
+  "dino.jurassicadventure.deinonychus": "Deinônimo",
+
+  "dino.jurassicadventure.triceratops": "Triceratops",
+  "dino.jurassicadventure.parasaurolophus": "Parassaurolofo",
+  "dino.jurassicadventure.stegosaurus": "Estegossauro",
+  "dino.jurassicadventure.ankylosaurus": "Anquilossauro",
+  "dino.jurassicadventure.gallimimus": "Galimimo",
+  "dino.jurassicadventure.pachycephalosaurus": "Pachycefalossauro",
+  "dino.jurassicadventure.brachiosaurus": "Braquiossauro",
+  "dino.jurassicadventure.diplodocus": "Diplodoco",
+
+  "mob.minecraft.cow": "Vaca",
+  "mob.minecraft.pig": "Porco",
+  "mob.minecraft.chicken": "Galinha",
+  "mob.minecraft.sheep": "Ovelha",
+  "mob.minecraft.salmon": "Salmão",
+  "mob.jurassicadventure.river_frog": "Sapo do Rio",
+
+  "item.jurassicadventure.cooked_frog_meat": "Carne de Sapo Assada",
+  "item.jurassicadventure.frog_meat": "Carne de Sapo Crua",
+
+  "item.jurassicadventure.river_frog_spawn_egg": "Spawn Sapo do Rio",
+
+  "block.jurassicadventure.amber_ore": "Minério de Amber",
+  "item.jurassicadventure.raw_amber": "Amber",
+  
+  "block.jurassicadventure.analyzer": "Extrator de DNA",
+  "block.jurassicadventure.sequencer": "Sequenciador de DNA",
+
+  "creativetab.jurassic_tab": "Jurassic Adventure"
+}

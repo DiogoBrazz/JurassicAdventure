@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "jurassicadventure:raw_amber",
+    "jurassicadventure:frog_meat",
+    "minecraft:beef",
+    "minecraft:porkchop",
+    "minecraft:mutton",
+    "minecraft:chicken",
+    "minecraft:pufferfish",
+    "minecraft:salmon"
+  ]
+}

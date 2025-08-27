@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "jurassicadventure:block/sequencer", "y": 180 },
+    "facing=east": { "model": "jurassicadventure:block/sequencer", "y": 270 },
+    "facing=south": { "model": "jurassicadventure:block/sequencer" },
+    "facing=west": { "model": "jurassicadventure:block/sequencer", "y": 90 }
+  }
+}

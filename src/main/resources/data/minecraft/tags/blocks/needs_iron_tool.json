@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "jurassicadventure:amber_ore",
+    "jurassicadventure:analyzer",
+    "jurassicadventure:sequencer",
+    "jurassicadventure:assembler"
+  ]
+}

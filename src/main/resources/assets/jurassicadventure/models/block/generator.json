@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "jurassicadventure:block/generator_top",
+    "front": "jurassicadventure:block/generator_front",
+    "side": "jurassicadventure:block/generator_side"
+  }
+}

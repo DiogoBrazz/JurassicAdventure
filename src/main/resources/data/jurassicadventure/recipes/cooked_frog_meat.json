@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "jurassicadventure:frog_meat"
+  },
+  "result": "jurassicadventure:cooked_frog_meat",
+  "experience": 0.35,
+  "cookingtime": 200
+}
