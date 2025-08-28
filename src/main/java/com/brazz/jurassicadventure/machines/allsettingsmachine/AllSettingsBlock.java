@@ -44,7 +44,7 @@ public abstract class AllSettingsBlock<T extends BlockEntity> extends BaseEntity
 
     @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
-        // Pega a direção atual do bloco
+        // Pega a direção atual do blocoa
         Direction currentFacing = state.getValue(FACING);
         // Calcula a nova direção baseada no espelhamento
         Direction newFacing = mirror.mirror(currentFacing);

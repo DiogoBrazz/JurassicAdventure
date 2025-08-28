@@ -30,7 +30,7 @@ public class AnalyzerRenderer implements BlockEntityRenderer<AnalyzerBlockEntity
         if (!itemStack.isEmpty()) {
             pPoseStack.pushPose();
 
-            pPoseStack.translate(0.5d, 2.1d, 0.5d);
+            pPoseStack.translate(0.4d, 0.55d, 0.6d);
             pPoseStack.scale(0.35f, 0.35f, 0.35f);
 
             float rotation = (pBlockEntity.getLevel().getGameTime() + pPartialTick) * 2;

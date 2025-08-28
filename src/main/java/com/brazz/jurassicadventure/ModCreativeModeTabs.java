@@ -90,6 +90,7 @@ public class ModCreativeModeTabs {
                         //BLOCKS
                         pOutput.accept(ModBlocks.AMBER_ORE.get());
                         pOutput.accept(ModBlocks.GENERATOR.get());
+                        pOutput.accept(ModBlocks.CABLE.get());
                         pOutput.accept(ModBlocks.ANALYZER.get());
                         pOutput.accept(ModBlocks.SEQUENCER.get());
                         pOutput.accept(ModBlocks.ASSEMBLER.get());

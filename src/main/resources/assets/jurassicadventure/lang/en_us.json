@@ -37,6 +37,10 @@
   "dino.jurassicadventure.brachiosaurus": "Brachiosaurus",
   "dino.jurassicadventure.diplodocus": "Diplodocus",
 
+  "dino.jurassicadventure.mamute": "Mamute",
+
+  "item.jurassicadventure.dinosaur_egg": "Dinosaur Egg",
+
   "mob.minecraft.cow": "Cow",
   "mob.minecraft.pig": "Pig",
   "mob.minecraft.chicken": "Chicken",
@@ -48,12 +52,19 @@
   "item.jurassicadventure.frog_meat": "Frog Meat",
 
   "item.jurassicadventure.river_frog_spawn_egg": "Spawn River Frog",
+  "item.jurassicadventure.rex_spawn_egg": "Spawn Rex",
+  "item.jurassicadventure.velociraptor_spawn_egg": "Spawn Velociraptor",
+  "item.jurassicadventure.brachiosaurus_spawn_egg": "Spawn Brachiosaurus",
 
   "block.jurassicadventure.amber_ore": "Amber Ore",
   "item.jurassicadventure.raw_amber": "Raw Amber",
   
+  "block.jurassicadventure.generator": "Energy Generator",
+  "block.jurassicadventure.cable": "Energy Cable",
   "block.jurassicadventure.analyzer": "DNA Extractor",
   "block.jurassicadventure.sequencer": "DNA Sequencer",
+  "block.jurassicadventure.assembler": "Genomic Assembler",
+  "block.jurassicadventure.injector": "Embryo Injector",
 
   "creativetab.jurassic_tab": "Jurassic Adventure"
 }

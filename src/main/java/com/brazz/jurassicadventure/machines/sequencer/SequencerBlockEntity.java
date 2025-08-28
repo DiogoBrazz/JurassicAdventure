@@ -26,26 +26,40 @@ public class SequencerBlockEntity extends AllSettingsEntity {
         super(ModBlockEntities.SEQUENCER_BLOCK_ENTITY.get(), pPos, pBlockState, 4, 200);
     }
 
+    private static final int ENERGY_CONSUMPTION_PER_TICK = 4;
+
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, @NotNull Inventory pPlayerInventory, @NotNull Player pPlayer) {
         return new SequencerMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
+    // função que apenas verifica se há energia suficiente para um tick de trabalho
+    private boolean hasEnoughEnergy() {
+        return this.energyStorage.getEnergyStored() >= ENERGY_CONSUMPTION_PER_TICK;
+    }
+
+    // Dentro de SequencerBlockEntity.java
+
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         Optional<ItemStack> recipeResult = getRecipeResult();
-
         ItemStack tube = itemHandler.getStackInSlot(2);
         boolean hasTube = tube.getItem() == ModItems.TUBE.get();
 
-        if (recipeResult.isPresent() && hasTube && canInsertResult(recipeResult.get())) {
+        // Só funciona se TODAS as condições forem verdadeiras.
+        if (recipeResult.isPresent() && hasTube && canInsertResult(recipeResult.get()) && hasEnoughEnergy()) {
+            // Consome a energia para este tick de trabalho
+            this.energyStorage.extractEnergy(ENERGY_CONSUMPTION_PER_TICK, false);
+            // Avança o progresso
             progress++;
             setChanged(pLevel, pPos, pState);
+            // Se o progresso terminou, cria o item
             if (progress >= maxProgress) {
                 processItem(recipeResult.get());
                 progress = 0;
             }
         } else {
+            // Se qualquer condição falhar, reseta o progresso
             progress = 0;
             setChanged(pLevel, pPos, pState);
         }

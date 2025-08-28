@@ -33,22 +33,6 @@ public class AnalyzerBlock extends AllSettingsBlock<AnalyzerBlockEntity> {
         return new AnalyzerBlockEntity(pos, state);
     }
 
-    @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand,
-            BlockHitResult pHit) {
-        if (!pLevel.isClientSide()) {
-            BlockEntity entity = pLevel.getBlockEntity(pPos);
-            if (entity instanceof AnalyzerBlockEntity) {
-                // abrir um menu
-                NetworkHooks.openScreen((ServerPlayer) pPlayer, (MenuProvider) entity, pPos);
-            } else {
-                throw new IllegalStateException("O nosso fornecedor de container está em falta!");
-            }
-        }
-
-        return InteractionResult.sidedSuccess(pLevel.isClientSide());
-    }
-
     @SuppressWarnings("deprecation")
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
@@ -65,6 +49,21 @@ public class AnalyzerBlock extends AllSettingsBlock<AnalyzerBlockEntity> {
             }
         }
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+    }
+
+    @Override
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand,
+            BlockHitResult pHit) {
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
+            if (entity instanceof AnalyzerBlockEntity) {
+                // abrir um menu
+                NetworkHooks.openScreen((ServerPlayer) pPlayer, (MenuProvider) entity, pPos);
+            } else {
+                throw new IllegalStateException("O nosso fornecedor de container está em falta!");
+            }
+        }
+        return InteractionResult.sidedSuccess(pLevel.isClientSide());
     }
 
     @Nullable

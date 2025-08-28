@@ -19,16 +19,8 @@ public class SequencerScreen extends AllSettingsScreen<SequencerMenu> {
 
     @Override
     protected void renderProgressBars(GuiGraphics guiGraphics, int x, int y) {
-        if (this.menu.isCrafting()) {
-            // A sua lógica para desenhar a barra de progresso do Sequencer.
-            int offsetX = 61;
-            int offsetY = 31;
-            int textureU = 176;
-            int textureV = 0;
-            int width = 54;
-            int height = menu.getScaledProgress();
-            
-            guiGraphics.blit(TEXTURE, x + offsetX, y + offsetY, textureU, textureV, width, height);
+        if (this.menu.isCrafting()) {       
+            guiGraphics.blit(TEXTURE, x + 61, y + 31, 176, 0, 54, menu.getScaledProgress());
         }
     }
 }

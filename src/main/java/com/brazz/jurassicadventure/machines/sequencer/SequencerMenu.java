@@ -18,11 +18,10 @@ import org.jetbrains.annotations.NotNull;
 public class SequencerMenu extends AllSettingsMenu {
     public final SequencerBlockEntity blockEntity;
     private final Level level;
-    private final ContainerData data;
 
     public SequencerMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()),
-                new SimpleContainerData(2)); //número de campos de dados que você quer expor: progress / maxProgress
+                new SimpleContainerData(4)); //número de campos de dados que você quer expor: progress / maxProgress
     }
 
     @Override
@@ -31,11 +30,10 @@ public class SequencerMenu extends AllSettingsMenu {
     }
 
     public SequencerMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.SEQUENCER_MENU.get(), pContainerId);
+        super(ModMenuTypes.SEQUENCER_MENU.get(), pContainerId, inv, entity, data, 8, 21, 42);
         checkContainerSize(inv, this.getMachineInventorySlotCount());
         this.blockEntity = (SequencerBlockEntity) entity;
         this.level = inv.player.level();
-        this.data = data;
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -52,7 +50,7 @@ public class SequencerMenu extends AllSettingsMenu {
                 return stack.getItem() == ModItems.DNA_SYRINGE.get();
             }
         });
-        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 2, 144, 11) {
+        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 2, 16, 13) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.getItem() == ModItems.TUBE.get();
@@ -62,18 +60,6 @@ public class SequencerMenu extends AllSettingsMenu {
 
         addDataSlots(data);
     }
-
-    public boolean isCrafting() {
-        return data.get(0) > 0;
-    }
-
-    public int getScaledProgress() {
-        int progress = this.data.get(0);
-        int maxProgress = this.data.get(1);
-        int progressArrowSize = 22; // Largura da sua seta de progresso
-        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
-    }
-
 
     @Override
     public boolean stillValid(Player pPlayer) {

@@ -27,7 +27,7 @@ public class AssemblerMenu extends AllSettingsMenu {
     public AssemblerMenu(int pContainerId, Inventory playerInventory, FriendlyByteBuf extraData) {
         // Agora, ele também cria um ContainerData para corresponder ao construtor principal.
         this(pContainerId, playerInventory, playerInventory.player.level().getBlockEntity(extraData.readBlockPos()),
-                new SimpleContainerData(2));
+                new SimpleContainerData(4));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class AssemblerMenu extends AllSettingsMenu {
     }
 
     public AssemblerMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.ASSEMBLER_MENU.get(), pContainerId);
+        super(ModMenuTypes.ASSEMBLER_MENU.get(), pContainerId, inv, entity, data, 8, 28, 42);
         checkContainerSize(inv, this.getMachineInventorySlotCount()); // <-- MUDANÇA: getMachineInventorySlotCount()
         this.blockEntity = (AssemblerBlockEntity) entity;
         this.level = inv.player.level();

@@ -13,6 +13,10 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -43,34 +47,70 @@ public class CableBlockEntity extends BlockEntity {
         int energyAvailableToSend = Math.min(this.energyStorage.getEnergyStored(), TRANSFER_RATE);
         if (energyAvailableToSend <= 0) return;
 
+        // --- PASSO 1: Separar os vizinhos em duas listas: máquinas e cabos ---
+        List<IEnergyStorage> machineSinks = new ArrayList<>();
+        List<IEnergyStorage> cableSinks = new ArrayList<>();
+
         for (Direction direction : Direction.values()) {
             BlockEntity be = level.getBlockEntity(worldPosition.relative(direction));
             if (be == null) continue;
 
             LazyOptional<IEnergyStorage> lazyNeighbor = be.getCapability(ForgeCapabilities.ENERGY, direction.getOpposite());
-
-            // --- AQUI ESTÁ A MUDANÇA ---
-            // Em vez de .ifPresent(lambda -> ...), usamos um if normal
             if (lazyNeighbor.isPresent()) {
                 IEnergyStorage neighborStorage = lazyNeighbor.resolve().get();
+                if (!neighborStorage.canReceive()) continue;
 
-                // Agora não estamos mais dentro de uma lambda e podemos modificar a variável
-                if (neighborStorage.canReceive() && this.energyStorage.getEnergyStored() > neighborStorage.getEnergyStored()) {
-                    int diff = this.energyStorage.getEnergyStored() - neighborStorage.getEnergyStored();
-                    int amountToSend = (diff + 1) / 2;
-                    amountToSend = Math.min(amountToSend, energyAvailableToSend);
-
-                    if (amountToSend > 0) {
-                        int accepted = neighborStorage.receiveEnergy(amountToSend, false);
-                        this.energyStorage.extractEnergy(accepted, false);
-                        energyAvailableToSend -= accepted;
+                // Se o vizinho NÃO é um cabo, é uma máquina/armazenador
+                if (!(be instanceof CableBlockEntity)) {
+                    if (neighborStorage.getEnergyStored() < neighborStorage.getMaxEnergyStored()) {
+                        machineSinks.add(neighborStorage);
+                    }
+                } 
+                // Se o vizinho É um cabo, usamos a lógica de balanceamento
+                else {
+                    if (this.energyStorage.getEnergyStored() > neighborStorage.getEnergyStored()) {
+                        cableSinks.add(neighborStorage);
                     }
                 }
             }
-            // --- FIM DA MUDANÇA ---
+        }
 
-            if (energyAvailableToSend <= 0) {
-                break;
+        // --- PASSO 2: PRIORIDADE - Enviar energia para as máquinas primeiro ---
+        if (!machineSinks.isEmpty()) {
+            // Distribui a energia de forma justa entre todas as máquinas que precisam
+            int energyPerMachine = energyAvailableToSend / machineSinks.size();
+            int remainder = energyAvailableToSend % machineSinks.size();
+
+            for (IEnergyStorage machine : machineSinks) {
+                if (energyAvailableToSend <= 0) break; // Para se a energia do tick acabar
+
+                int amountForThisMachine = energyPerMachine;
+                if (remainder > 0) {
+                    amountForThisMachine++;
+                    remainder--;
+                }
+
+                int accepted = machine.receiveEnergy(amountForThisMachine, false);
+                this.energyStorage.extractEnergy(accepted, false);
+                energyAvailableToSend -= accepted;
+            }
+        }
+
+        // --- PASSO 3: Usar a energia que sobrou para balancear com outros cabos ---
+        if (energyAvailableToSend > 0 && !cableSinks.isEmpty()) {
+            for (IEnergyStorage cableNeighbor : cableSinks) {
+                if (energyAvailableToSend <= 0) break;
+
+                // Lógica de balanceamento: envia metade da diferença
+                int diff = this.energyStorage.getEnergyStored() - cableNeighbor.getEnergyStored();
+                int amountToSend = (diff + 1) / 2;
+                amountToSend = Math.min(amountToSend, energyAvailableToSend); // Limita ao que ainda podemos enviar
+
+                if (amountToSend > 0) {
+                    int accepted = cableNeighbor.receiveEnergy(amountToSend, false);
+                    this.energyStorage.extractEnergy(accepted, false);
+                    energyAvailableToSend -= accepted;
+                }
             }
         }
     }

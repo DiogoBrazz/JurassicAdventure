@@ -1,48 +1,56 @@
 package com.brazz.jurassicadventure.machines.allsettingsmachine;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-// <T extends AllSettingsMenu>: Diz que este ecrã genérico só funciona com menus que são do tipo AllSettingsMenu.
 public abstract class AllSettingsScreen<T extends AllSettingsMenu> extends AbstractContainerScreen<T> {
 
-    // Guarda a textura específica da máquina filha (Analyzer, Sequencer, etc.).
-    private final ResourceLocation texture;
+    // Guarda a textura de FUNDO da máquina filha
+    private final ResourceLocation backgroundTexture;
+    
+    // << ADICIONADO: Textura da BARRA DE ENERGIA, compartilhada por todas as máquinas
+    private static final ResourceLocation ENERGY_TEXTURE = new ResourceLocation("jurassicadventure", "textures/gui/energy.png");
 
-    // O construtor recebe a textura da classe filha e guarda-a.
-    public AllSettingsScreen(T pMenu, Inventory pPlayerInventory, Component pTitle, ResourceLocation texture) {
+    public AllSettingsScreen(T pMenu, Inventory pPlayerInventory, Component pTitle, ResourceLocation backgroundTexture) {
         super(pMenu, pPlayerInventory, pTitle);
-        this.texture = texture;
+        this.backgroundTexture = backgroundTexture;
     }
 
-    // Este método é o "pintor" principal e é partilhado por todos os ecrãs.
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        // Usa a textura que foi passada pela classe filha.
-        RenderSystem.setShaderTexture(0, this.texture);
+        
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        // Desenha o fundo da interface.
-        guiGraphics.blit(this.texture, x, y, 0, 0, imageWidth, imageHeight);
+        // Desenha o fundo da GUI específica da máquina
+        guiGraphics.blit(this.backgroundTexture, x, y, 0, 0, imageWidth, imageHeight);
 
-        // AQUI ESTÁ A PARTE IMPORTANTE:
-        // Em vez de desenhar a barra de progresso aqui, nós "delegamos" essa tarefa
-        // para um método que a classe filha é obrigada a implementar.
+        // << ADICIONADO: Desenha a BARRA DE ENERGIA (lógica do Gerador adaptada)
+        int energyHeight = this.menu.getEnergyHeight();
+        if (energyHeight > 0) {
+            // Usa as coordenadas e tamanho que você especificou (9x42, na posição x=153, y=7 a 48)
+            guiGraphics.blit(ENERGY_TEXTURE, 
+                    x + 153, y + 7 + (42 - energyHeight), // Posição Y ajustada para crescer de baixo para cima
+                    0, 42 - energyHeight,            // Coordenada V ajustada na textura
+                    9, energyHeight,                 // Largura e altura a renderizar
+                    9, 42);                          // Tamanho total da textura de energia
+        }
+
+        // Chama o método para desenhar as barras de progresso específicas de cada máquina
         renderProgressBars(guiGraphics, x, y);
     }
-
-    // ESTE É O "CONTRATO":
-    // Ao ser 'abstract', este método obriga qualquer classe que herde de AllSettingsScreen
-    // a criar a sua própria lógica para desenhar as suas barras de progresso únicas.
+    
+    // Este método continua 'abstract' para que cada máquina desenhe sua própria seta de progresso
     protected abstract void renderProgressBars(GuiGraphics guiGraphics, int x, int y);
 
-    // O resto dos métodos são boilerplate (código repetido) que tratam da renderização geral.
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
         renderBackground(guiGraphics);
@@ -51,7 +59,16 @@ public abstract class AllSettingsScreen<T extends AllSettingsMenu> extends Abstr
     }
 
     @Override
-    protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
-        // Deixado em branco para não ter os títulos "Assembler" e "Inventory".
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        // Deixamos os títulos para as classes filhas, se quiserem.
+        // Mas o TOOLTIP da energia, que é global, vem para cá.
+
+        // << ADICIONADO: Lógica do Tooltip de Energia
+        // Usa as coordenadas da área da barra de energia (x=153, y=7, w=9, h=42)
+        if (isHovering(153, 7, 9, 42, mouseX, mouseY)) {
+            guiGraphics.renderTooltip(this.font,
+                Component.literal(menu.getEnergyStored() + " / " + menu.getMaxEnergyStored() + " FE"),
+                mouseX - leftPos, mouseY - topPos);
+        }
     }
 }

@@ -34,7 +34,7 @@ public class InjectorMenu extends AllSettingsMenu{
     }
 
     public InjectorMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.INJECTOR_MENU.get(), pContainerId);
+        super(ModMenuTypes.INJECTOR_MENU.get(), pContainerId, inv, entity, data, 8, 28, 56);
         checkContainerSize(inv, this.getMachineInventorySlotCount());
         this.blockEntity = (InjectorBlockEntity) entity;
         this.level = inv.player.level();

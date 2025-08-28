@@ -20,7 +20,7 @@ public class AnalyzerScreen extends AllSettingsScreen<AnalyzerMenu> {
     @Override
     protected void renderProgressBars(GuiGraphics guiGraphics, int x, int y) {
         if (this.menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 74, y + 32, 176, 0, menu.getScaledProgress(), 17);
+            guiGraphics.blit(TEXTURE, x + 72, y + 39, 176, 0, menu.getScaledProgress(), 10);
         }
     }
 }

@@ -1,0 +1,50 @@
+{
+	"textures": {
+		"all": "jurassicadventure:block/cable",
+		"particle": "jurassicadventure:block/cable"
+	},
+	"elements": [
+		{
+			"from": [5, 5, 5],
+			"to": [11, 11, 11],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 6], "texture": "#all"},
+				"east": {"uv": [0, 0, 6, 6], "texture": "#all"},
+				"south": {"uv": [0, 0, 6, 6], "texture": "#all"},
+				"west": {"uv": [0, 0, 6, 6], "texture": "#all"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#all"},
+				"down": {"uv": [0, 0, 6, 6], "texture": "#all"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 0.25, 0.25],
+			"scale": [0.315, 0.315, 0.315]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 0.25, 0.25],
+			"scale": [0.315, 0.315, 0.315]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, -140, 0],
+			"scale": [0.585, 0.585, 0.585]
+		},
+		"fixed": {
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

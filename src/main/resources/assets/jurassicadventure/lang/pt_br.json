@@ -3,17 +3,20 @@
   "item.jurassicadventure.syringe": "Seringa",
   "item.jurassicadventure.broken_syringe": "Seringa Quebrada",
   "item.jurassicadventure.failed_syringe": "Seringa com DNA Corrompido",
+  "item.jurassicadventure.nutritional_syringe": "Seringa Nutritiva",
+  "item.jurassicadventure.embryo_syringe": "Seringa com Embrião",
 
   "item.jurassicadventure.tube": "Tubo de Ensaio",
-  "item.jurassicadventure.partial_genome_tube": "Tubo de Ensaio com Genoma Parcial",
-  "item.jurassicadventure.complete_genome_tube": "Tubo de Ensaio com Genoma Completo",
+  "item.jurassicadventure.failed_tube": "Tubo de Ensaio Corrompido",
+  "item.jurassicadventure.partial_genome_tube": "Genoma Parcial",
+  "item.jurassicadventure.complete_genome_tube": "Genoma Completo",
 
-  "item.jurassicadventure.syringe_dna_cow": "Vaca DNA",
-  "item.jurassicadventure.syringe_dna_chicken": "Galina DNA",
-  "item.jurassicadventure.syringe_dna_pig": "Porco DNA",
-  "item.jurassicadventure.syringe_dna_mutton": "Ovelha DNA",
-  "item.jurassicadventure.syringe_dna_frog": "Sapo do Rio DNA",
-  "item.jurassicadventure.syringe_dna_fish": "Salmão DNA",
+  "item.jurassicadventure.syringe_dna_cow": "DNA de Vaca",
+  "item.jurassicadventure.syringe_dna_chicken": "DNA de Galinha",
+  "item.jurassicadventure.syringe_dna_pig": "DNA de Porco",
+  "item.jurassicadventure.syringe_dna_mutton": "DNA de Ovelha",
+  "item.jurassicadventure.syringe_dna_frog": "DNA de Sapo do Rio",
+  "item.jurassicadventure.syringe_dna_fish": "DNA de Salmão",
 
   "dino.jurassicadventure.rex": "Tiranossauro Rex",
   "dino.jurassicadventure.velociraptor": "Velociraptor",
@@ -23,9 +26,9 @@
   "dino.jurassicadventure.yutyrannus": "Yutiranus",
   "dino.jurassicadventure.dilophosaurus": "Dilofossauro",
   "dino.jurassicadventure.megalania": "Megalânia",
-  "dino.jurassicadventure.deinonychus": "Deinônimo",
+  "dino.jurassicadventure.deinonychus": "Deinonico",
 
-  "dino.jurassicadventure.triceratops": "Triceratops",
+  "dino.jurassicadventure.triceratops": "Tricerátops",
   "dino.jurassicadventure.parasaurolophus": "Parassaurolofo",
   "dino.jurassicadventure.stegosaurus": "Estegossauro",
   "dino.jurassicadventure.ankylosaurus": "Anquilossauro",
@@ -33,6 +36,10 @@
   "dino.jurassicadventure.pachycephalosaurus": "Pachycefalossauro",
   "dino.jurassicadventure.brachiosaurus": "Braquiossauro",
   "dino.jurassicadventure.diplodocus": "Diplodoco",
+
+  "dino.jurassicadventure.mamute": "Mamute",
+
+  "item.jurassicadventure.dinosaur_egg": "Ovo de Dinossauro",
 
   "mob.minecraft.cow": "Vaca",
   "mob.minecraft.pig": "Porco",
@@ -44,13 +51,20 @@
   "item.jurassicadventure.cooked_frog_meat": "Carne de Sapo Assada",
   "item.jurassicadventure.frog_meat": "Carne de Sapo Crua",
 
-  "item.jurassicadventure.river_frog_spawn_egg": "Spawn Sapo do Rio",
+  "item.jurassicadventure.river_frog_spawn_egg": "Ovo Gerador de Sapo do Rio",
+  "item.jurassicadventure.rex_spawn_egg": "Ovo Gerador de Rex",
+  "item.jurassicadventure.velociraptor_spawn_egg": "Ovo Gerador de Velociraptor",
+  "item.jurassicadventure.brachiosaurus_spawn_egg": "Ovo Gerador de Braquiossauro",
 
-  "block.jurassicadventure.amber_ore": "Minério de Amber",
-  "item.jurassicadventure.raw_amber": "Amber",
+  "block.jurassicadventure.amber_ore": "Minério de Âmbar",
+  "item.jurassicadventure.raw_amber": "Âmbar Bruto",
   
+  "block.jurassicadventure.generator": "Gerador de Energia",
+  "block.jurassicadventure.cable": "Cabo de Energia",
   "block.jurassicadventure.analyzer": "Extrator de DNA",
   "block.jurassicadventure.sequencer": "Sequenciador de DNA",
+  "block.jurassicadventure.assembler": "Montador Genômico",
+  "block.jurassicadventure.injector": "Injetor de Embriões",
 
   "creativetab.jurassic_tab": "Jurassic Adventure"
 }

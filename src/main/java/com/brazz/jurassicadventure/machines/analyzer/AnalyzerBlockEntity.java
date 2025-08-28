@@ -28,6 +28,8 @@ public class AnalyzerBlockEntity extends AllSettingsEntity {
         super(ModBlockEntities.ANALYZER_BLOCK_ENTITY.get(), pPos, pBlockState, 8, 100);
     }
 
+    // Constante de consumo específica desta máquina
+    private static final int ENERGY_CONSUMPTION_PER_TICK = 2;
     
 
     // --- MÉTODOS OBRIGATÓRIOS DO MenuProvider ---
@@ -48,20 +50,29 @@ public class AnalyzerBlockEntity extends AllSettingsEntity {
         return true; // Todos os slots ocupados
     }
 
+    // função que apenas verifica se há energia suficiente para um tick de trabalho
+    private boolean hasEnoughEnergy() {
+        return this.energyStorage.getEnergyStored() >= ENERGY_CONSUMPTION_PER_TICK;
+    }
+
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-        ItemStack recipeResult = getRecipeResult();
-        // Se não houver resultado válido ou todos os slots de saída estiverem cheios, reinicia progresso e retorna
-        if (recipeResult.isEmpty() || areOutputSlotsFull()) {
+        // Seus métodos para verificar a receita (ex: getRecipeResult)
+        ItemStack recipeResult = getRecipeResult(); 
+        
+        // A condição completa: tem receita? tem espaço? E TEM ENERGIA?
+        if (recipeResult.isEmpty() || areOutputSlotsFull() || !hasEnoughEnergy()) {
             if (progress != 0) {
                 progress = 0;
                 setChanged(pLevel, pPos, pState);
             }
-            return; // Máquina para aqui
+            return; // Para a máquina se qualquer condição falhar
         }
-        // Avança o progresso
+        //  Consome a energia ANTES de fazer o trabalho
+        this.energyStorage.extractEnergy(ENERGY_CONSUMPTION_PER_TICK, false);
         progress++;
         setChanged(pLevel, pPos, pState);
-        // Quando o progresso atingir o máximo, processa o item e reseta o progresso
+
+        // Finaliza o processo
         if (progress >= maxProgress) {
             processItem(recipeResult);
             progress = 0;

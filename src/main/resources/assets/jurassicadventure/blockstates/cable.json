@@ -1,0 +1,11 @@
+{
+  "multipart": [
+    { "apply": { "model": "jurassicadventure:block/cable_core" }},
+    { "when": { "north": "true" }, "apply": { "model": "jurassicadventure:block/cable_side" }},
+    { "when": { "east": "true"  }, "apply": { "model": "jurassicadventure:block/cable_side", "y": 90 }},
+    { "when": { "south": "true" }, "apply": { "model": "jurassicadventure:block/cable_side", "y": 180 }},
+    { "when": { "west": "true"  }, "apply": { "model": "jurassicadventure:block/cable_side", "y": 270 }},
+    { "when": { "up": "true"    }, "apply": { "model": "jurassicadventure:block/cable_side", "x": -90 }},
+    { "when": { "down": "true"  }, "apply": { "model": "jurassicadventure:block/cable_side", "x": 90 }}
+  ]
+}

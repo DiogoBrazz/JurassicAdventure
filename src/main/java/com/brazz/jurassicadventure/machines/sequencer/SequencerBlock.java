@@ -26,6 +26,12 @@ public class SequencerBlock extends AllSettingsBlock<SequencerBlockEntity> {
         super(props);
     }
 
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new SequencerBlockEntity(pos, state);
+    }
+
     @SuppressWarnings("deprecation")
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
@@ -42,12 +48,6 @@ public class SequencerBlock extends AllSettingsBlock<SequencerBlockEntity> {
             }
         }
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-    }
-
-    @Nullable
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new SequencerBlockEntity(pos, state);
     }
 
     @Override
@@ -72,6 +72,6 @@ public class SequencerBlock extends AllSettingsBlock<SequencerBlockEntity> {
             return null;
         }
         return createTickerHelper(pBlockEntityType, ModBlockEntities.SEQUENCER_BLOCK_ENTITY.get(),
-                (pLevel1, pPos, pState1, pBlockEntity) -> ((SequencerBlockEntity) pBlockEntity).tick(pLevel1, pPos, pState1));
+                (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
     }
 }
