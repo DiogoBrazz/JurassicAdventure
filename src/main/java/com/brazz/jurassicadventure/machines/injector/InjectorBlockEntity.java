@@ -21,16 +21,23 @@ public class InjectorBlockEntity extends AllSettingsEntity{
         super(ModBlockEntities.INJECTOR_BLOCK_ENTITY.get(), pPos, pBlockState, 3, 400);
     }
 
+    private static final int ENERGY_CONSUMPTION_PER_TICK = 12;
+
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, @NotNull Inventory pPlayerInventory, @NotNull Player pPlayer) {
         return new InjectorMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
+    private boolean hasEnoughEnergy() {
+        return this.energyStorage.getEnergyStored() >= ENERGY_CONSUMPTION_PER_TICK;
+    }
+
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         // 1. Verifica se a máquina pode processar os itens atuais.
-        if (canProcess()) {
-            // 2. Se sim, avança o progresso.
+        if (canProcess() && hasEnoughEnergy()) {
+            // 2. Se sim, avança o progresso
+            this.energyStorage.extractEnergy(ENERGY_CONSUMPTION_PER_TICK, false);
             progress++;
             setChanged(pLevel, pPos, pState);
 

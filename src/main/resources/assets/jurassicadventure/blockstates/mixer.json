@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "jurassicadventure:block/mixer", "y": 180 },
+    "facing=east": { "model": "jurassicadventure:block/mixer", "y": 270 },
+    "facing=south": { "model": "jurassicadventure:block/mixer" },
+    "facing=west": { "model": "jurassicadventure:block/mixer", "y": 90 }
+  }
+}

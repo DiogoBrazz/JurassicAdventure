@@ -3,7 +3,9 @@ package com.brazz.jurassicadventure;
 import com.brazz.jurassicadventure.machines.analyzer.AnalyzerMenu;
 import com.brazz.jurassicadventure.machines.assembler.AssemblerMenu;
 import com.brazz.jurassicadventure.machines.generator.GeneratorMenu;
+import com.brazz.jurassicadventure.machines.incubator.IncubatorMenu;
 import com.brazz.jurassicadventure.machines.injector.InjectorMenu;
+import com.brazz.jurassicadventure.machines.mixer.MixerMenu;
 import com.brazz.jurassicadventure.machines.sequencer.SequencerMenu;
 
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -33,6 +35,12 @@ public class ModMenuTypes {
 
         public static final RegistryObject<MenuType<InjectorMenu>> INJECTOR_MENU = registerMenuType(
                         InjectorMenu::new, "injector_menu");
+
+        public static final RegistryObject<MenuType<MixerMenu>> MIXER_MENU = registerMenuType(
+                        MixerMenu::new, "mixer_menu");
+
+        public static final RegistryObject<MenuType<IncubatorMenu>> INCUBATOR_MENU = registerMenuType(
+                        IncubatorMenu::new, "incubator_menu");
 
         private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(
                         IContainerFactory<T> factory, String name) {

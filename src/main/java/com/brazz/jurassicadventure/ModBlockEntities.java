@@ -4,7 +4,9 @@ import com.brazz.jurassicadventure.machines.analyzer.AnalyzerBlockEntity;
 import com.brazz.jurassicadventure.machines.assembler.AssemblerBlockEntity;
 import com.brazz.jurassicadventure.machines.cables.CableBlockEntity;
 import com.brazz.jurassicadventure.machines.generator.GeneratorBlockEntity;
+import com.brazz.jurassicadventure.machines.incubator.IncubatorBlockEntity;
 import com.brazz.jurassicadventure.machines.injector.InjectorBlockEntity;
+import com.brazz.jurassicadventure.machines.mixer.MixerBlockEntity;
 import com.brazz.jurassicadventure.machines.sequencer.SequencerBlockEntity;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -59,6 +61,20 @@ public class ModBlockEntities {
                                         () -> BlockEntityType.Builder
                                                         .<InjectorBlockEntity>of(InjectorBlockEntity::new,
                                                                         ModBlocks.INJECTOR.get())
+                                                        .build(null));
+
+        public static final RegistryObject<BlockEntityType<MixerBlockEntity>> MIXER_BLOCK_ENTITY = BLOCK_ENTITIES
+                        .register("mixer_block_entity",
+                                        () -> BlockEntityType.Builder
+                                                        .<MixerBlockEntity>of(MixerBlockEntity::new,
+                                                                        ModBlocks.MIXER.get())
+                                                        .build(null));
+                                                
+        public static final RegistryObject<BlockEntityType<IncubatorBlockEntity>> INCUBATOR_BLOCK_ENTITY = BLOCK_ENTITIES
+                        .register("incubator_block_entity",
+                                        () -> BlockEntityType.Builder
+                                                        .<IncubatorBlockEntity>of(IncubatorBlockEntity::new,
+                                                                        ModBlocks.INCUBATOR.get())
                                                         .build(null));
 
         public static void register(IEventBus eventBus) {

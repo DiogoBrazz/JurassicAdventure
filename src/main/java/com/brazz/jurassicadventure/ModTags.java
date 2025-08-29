@@ -11,6 +11,7 @@ public class ModTags {
         public static final TagKey<Item> ANALYZABLE_ITEMS = tag("analyzable_items");
         public static final TagKey<Item> DINO_DNAS = tag("dino_dnas");
         public static final TagKey<Item> MOB_DNAS = tag("mob_dnas");
+        public static final TagKey<Item> NATURAL_FOODS = tag("natural_foods");
 
         @SuppressWarnings("removal")
         private static TagKey<Item> tag(String name) {

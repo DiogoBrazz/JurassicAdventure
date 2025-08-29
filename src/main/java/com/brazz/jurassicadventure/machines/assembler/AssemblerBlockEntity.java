@@ -24,20 +24,26 @@ public class AssemblerBlockEntity extends AllSettingsEntity {
         super(ModBlockEntities.ASSEMBLER_BLOCK_ENTITY.get(), pPos, pBlockState, 6, 300);
     }
 
+    private static final int ENERGY_CONSUMPTION_PER_TICK = 8;
+
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, @NotNull Inventory pPlayerInventory, @NotNull Player pPlayer) {
         return new AssemblerMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
+    private boolean hasEnoughEnergy() {
+        return this.energyStorage.getEnergyStored() >= ENERGY_CONSUMPTION_PER_TICK;
+    }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
         // 1. Descobre qual seria o resultado da receita com base nos inputs atuais.
         Optional<ItemStack> recipeResult = getRecipeResult();
 
         // 2. Se a receita for válida E o resultado puder ser inserido na saída...
-        if (recipeResult.isPresent() && canInsertResult(recipeResult.get())) {
+        if (recipeResult.isPresent() && canInsertResult(recipeResult.get()) && hasEnoughEnergy()) {
             // ...o progresso avança.
+            this.energyStorage.extractEnergy(ENERGY_CONSUMPTION_PER_TICK, false);
             progress++;
             setChanged(level, pos, state);
             if (progress >= maxProgress) {

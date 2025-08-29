@@ -12,7 +12,9 @@ import com.brazz.jurassicadventure.machines.analyzer.AnalyzerRenderer;
 import com.brazz.jurassicadventure.machines.analyzer.AnalyzerScreen;
 import com.brazz.jurassicadventure.machines.assembler.AssemblerScreen;
 import com.brazz.jurassicadventure.machines.generator.GeneratorScreen;
+import com.brazz.jurassicadventure.machines.incubator.IncubatorScreen;
 import com.brazz.jurassicadventure.machines.injector.InjectorScreen;
+import com.brazz.jurassicadventure.machines.mixer.MixerScreen;
 import com.brazz.jurassicadventure.machines.sequencer.SequencerScreen;
 
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -27,6 +29,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib.GeckoLib;
+import com.brazz.jurassicadventure.network.ModMessages;
 
 @Mod(JurassicAdventure.MODID)
 public class JurassicAdventure {
@@ -43,6 +46,7 @@ public class JurassicAdventure {
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        ModMessages.register();
 
         // regista os atributos do mob.
         modEventBus.addListener(this::entityAttributeEvent);
@@ -68,8 +72,9 @@ public class JurassicAdventure {
             MenuScreens.register(ModMenuTypes.SEQUENCER_MENU.get(), SequencerScreen::new);
             MenuScreens.register(ModMenuTypes.ASSEMBLER_MENU.get(), AssemblerScreen::new);
             MenuScreens.register(ModMenuTypes.INJECTOR_MENU.get(), InjectorScreen::new);
-
-            
+            MenuScreens.register(ModMenuTypes.MIXER_MENU.get(), MixerScreen::new);
+            MenuScreens.register(ModMenuTypes.INCUBATOR_MENU.get(), IncubatorScreen::new);
+              
             EntityRenderers.register(ModEntities.RIVER_FROG.get(), RiverFrogRenderer::new);
             EntityRenderers.register(ModEntities.REX.get(), RexRenderer::new);
             EntityRenderers.register(ModEntities.VELOCIRAPTOR.get(), VelociraptorRenderer::new);

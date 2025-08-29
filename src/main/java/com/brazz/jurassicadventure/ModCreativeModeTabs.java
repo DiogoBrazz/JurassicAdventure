@@ -95,7 +95,8 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModBlocks.SEQUENCER.get());
                         pOutput.accept(ModBlocks.ASSEMBLER.get());
                         pOutput.accept(ModBlocks.INJECTOR.get());
-
+                        pOutput.accept(ModBlocks.MIXER.get());
+                        pOutput.accept(ModBlocks.INCUBATOR.get());
                         
                     })
                     .build());

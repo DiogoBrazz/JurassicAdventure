@@ -16,8 +16,10 @@ import com.brazz.jurassicadventure.machines.analyzer.AnalyzerBlock;
 import com.brazz.jurassicadventure.machines.assembler.AssemblerBlock;
 import com.brazz.jurassicadventure.machines.cables.CableBlock;
 import com.brazz.jurassicadventure.machines.injector.InjectorBlock;
+import com.brazz.jurassicadventure.machines.mixer.MixerBlock;
 import com.brazz.jurassicadventure.machines.sequencer.SequencerBlock;
 import com.brazz.jurassicadventure.machines.generator.GeneratorBlock;
+import com.brazz.jurassicadventure.machines.incubator.IncubatorBlock;
 
 public class ModBlocks {
         public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
@@ -46,6 +48,12 @@ public class ModBlocks {
                                         .requiresCorrectToolForDrops()));
         public static final RegistryObject<Block> INJECTOR = registerBlock("injector",
                         () -> new InjectorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                                        .requiresCorrectToolForDrops()));
+        public static final RegistryObject<Block> MIXER = registerBlock("mixer",
+                        () -> new MixerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                                        .requiresCorrectToolForDrops()));
+        public static final RegistryObject<Block> INCUBATOR = registerBlock("incubator",
+                        () -> new IncubatorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                                         .requiresCorrectToolForDrops()));
 
         // --- MÉTODO AUXILIAR SIMPLIFICADO ---

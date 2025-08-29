@@ -46,6 +46,7 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider {
     private static final int ENERGY_CAPACITY = 10000;       //Armazenamento
     private static final int ENERGY_TRANSFER_RATE = 32;     //Velocidade de tranferencia
     private static final int ENERGY_GENERATION_RATE = 4;   //Quantidade de energia gerada por tick
+    private static final int FUEL_EFFICIENCY_DIVISOR = 4; //Divide o tempo de queima total do item por 4, diminui a geração padrão em 4x
 
     public GeneratorBlockEntity(BlockPos pPos, BlockState pState) {
         super(ModBlockEntities.GENERATOR_BLOCK_ENTITY.get(), pPos, pState);
@@ -162,15 +163,15 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider {
 
         if (isBurning(pBlockEntity)) {
             pBlockEntity.progress--;
-            // Gera 40 FE por tick enquanto estiver queimando
             generateEnergy(pBlockEntity, ENERGY_GENERATION_RATE);
             setChanged(pLevel, pPos, pState);
         } else {
             ItemStack fuel = pBlockEntity.itemHandler.getStackInSlot(0);
             int burnTime = ForgeHooks.getBurnTime(fuel, RecipeType.SMELTING);
-            if (burnTime > 0) {
+            int effectiveBurnTime = burnTime / FUEL_EFFICIENCY_DIVISOR;
+            if (effectiveBurnTime > 0) {
                 pBlockEntity.itemHandler.extractItem(0, 1, false);
-                pBlockEntity.maxProgress = burnTime;
+                pBlockEntity.maxProgress = effectiveBurnTime;
                 pBlockEntity.progress = pBlockEntity.maxProgress;
                 setChanged(pLevel, pPos, pState);
             }
