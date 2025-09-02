@@ -1,0 +1,9 @@
+{
+  "name": "Guia Jurássico",
+  "landing_text": "Bem-vindo ao guia do Jurassic Adventure!",
+  "version": 1,
+  "subtitle": "Tudo sobre fósseis e dinossauros.",
+  "creative_tab": "misc",
+  "model": "patchouli:book_green",
+  "show_progress": false
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "jurassicadventure:block/electric_fence_pillar"
+  }
+}

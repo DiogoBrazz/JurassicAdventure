@@ -27,6 +27,7 @@ public class ModCreativeModeTabs {
                     // Define quais itens aparecerão nesta aba.
                     .displayItems((pParameters, pOutput) -> {
                         //ITEMS
+                        pOutput.accept(ModItems.JURASSIC_GUIDE.get());
                         pOutput.accept(ModItems.RAW_AMBER.get());
                         pOutput.accept(ModItems.SYRINGE.get());
                         pOutput.accept(ModItems.BROKEN_SYRINGE.get());
@@ -89,6 +90,8 @@ public class ModCreativeModeTabs {
 
                         //BLOCKS
                         pOutput.accept(ModBlocks.AMBER_ORE.get());
+                        pOutput.accept(ModBlocks.ELECTRIC_FENCE_PILLAR.get());
+                        pOutput.accept(ModBlocks.ELECTRIC_FENCE_WIRE.get());
                         pOutput.accept(ModBlocks.GENERATOR.get());
                         pOutput.accept(ModBlocks.CABLE.get());
                         pOutput.accept(ModBlocks.ANALYZER.get());

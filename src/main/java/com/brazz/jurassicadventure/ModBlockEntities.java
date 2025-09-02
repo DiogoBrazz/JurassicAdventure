@@ -3,6 +3,7 @@ package com.brazz.jurassicadventure;
 import com.brazz.jurassicadventure.machines.analyzer.AnalyzerBlockEntity;
 import com.brazz.jurassicadventure.machines.assembler.AssemblerBlockEntity;
 import com.brazz.jurassicadventure.machines.cables.CableBlockEntity;
+import com.brazz.jurassicadventure.machines.electricfence.ElectricFenceBlockEntity;
 import com.brazz.jurassicadventure.machines.generator.GeneratorBlockEntity;
 import com.brazz.jurassicadventure.machines.incubator.IncubatorBlockEntity;
 import com.brazz.jurassicadventure.machines.injector.InjectorBlockEntity;
@@ -75,6 +76,15 @@ public class ModBlockEntities {
                                         () -> BlockEntityType.Builder
                                                         .<IncubatorBlockEntity>of(IncubatorBlockEntity::new,
                                                                         ModBlocks.INCUBATOR.get())
+                                                        .build(null));
+
+
+        public static final RegistryObject<BlockEntityType<ElectricFenceBlockEntity>> ELECTRIC_FENCE_BE = BLOCK_ENTITIES
+                        .register("electric_fence_be", 
+                                        () -> BlockEntityType.Builder
+                                                        .<ElectricFenceBlockEntity>of(ElectricFenceBlockEntity::new,
+                                                                ModBlocks.ELECTRIC_FENCE_PILLAR.get(),
+                                                                ModBlocks.ELECTRIC_FENCE_WIRE.get())
                                                         .build(null));
 
         public static void register(IEventBus eventBus) {

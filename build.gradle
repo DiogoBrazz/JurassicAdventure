@@ -69,6 +69,8 @@ repositories {
             includeGroup("com.eliotlash.mclib")
         }
     }
+
+    maven { url 'https://maven.blamejared.com' }
 }
 
 dependencies {
@@ -76,6 +78,10 @@ dependencies {
     
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
     implementation("com.eliotlash.mclib:mclib:20")
+
+    // Patchouli API (apenas para compilar contra a API)
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.20.1-81-FORGE:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.20.1-81-FORGE")
 }
 
 tasks.named('processResources', ProcessResources).configure {

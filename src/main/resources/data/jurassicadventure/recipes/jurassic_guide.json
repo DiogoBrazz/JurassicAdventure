@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "jurassicadventure:raw_amber"
+    }
+  ],
+  "result": {
+    "item": "jurassicadventure:jurassic_guide",
+    "count": 1
+  }
+}

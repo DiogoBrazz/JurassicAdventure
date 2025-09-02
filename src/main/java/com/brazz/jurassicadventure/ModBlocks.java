@@ -15,6 +15,8 @@ import java.util.function.Supplier;
 import com.brazz.jurassicadventure.machines.analyzer.AnalyzerBlock;
 import com.brazz.jurassicadventure.machines.assembler.AssemblerBlock;
 import com.brazz.jurassicadventure.machines.cables.CableBlock;
+import com.brazz.jurassicadventure.machines.electricfence.ElectricFencePillarBlock;
+import com.brazz.jurassicadventure.machines.electricfence.ElectricFenceWireBlock;
 import com.brazz.jurassicadventure.machines.injector.InjectorBlock;
 import com.brazz.jurassicadventure.machines.mixer.MixerBlock;
 import com.brazz.jurassicadventure.machines.sequencer.SequencerBlock;
@@ -55,6 +57,12 @@ public class ModBlocks {
         public static final RegistryObject<Block> INCUBATOR = registerBlock("incubator",
                         () -> new IncubatorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                                         .requiresCorrectToolForDrops()));
+
+        public static final RegistryObject<Block> ELECTRIC_FENCE_PILLAR = registerBlock("electric_fence_pillar",
+        () -> new ElectricFencePillarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+
+        public static final RegistryObject<Block> ELECTRIC_FENCE_WIRE = registerBlock("electric_fence_wire",
+        () -> new ElectricFenceWireBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS).noOcclusion()));
 
         // --- MÉTODO AUXILIAR SIMPLIFICADO ---
         private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

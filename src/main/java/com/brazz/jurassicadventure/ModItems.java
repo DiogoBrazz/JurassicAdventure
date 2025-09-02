@@ -57,6 +57,9 @@ public class ModItems {
         public static final RegistryObject<Item> DINOSAUR_EGG = ITEMS.register("dinosaur_egg",
             () -> new GeneticInfoItem(new Item.Properties().stacksTo(1)));
 
+        public static final RegistryObject<Item> JURASSIC_GUIDE = ITEMS.register("jurassic_guide",
+        () -> new Item(new Item.Properties()));
+
 
         public static final RegistryObject<Item> FROG_MEAT = ITEMS.register("frog_meat",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()

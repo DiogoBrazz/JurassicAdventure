@@ -66,5 +66,17 @@
   "block.jurassicadventure.assembler": "Montador Genômico",
   "block.jurassicadventure.injector": "Injetor de Embriões",
 
-  "creativetab.jurassic_tab": "Jurassic Adventure"
+  "creativetab.jurassic_tab": "Jurassic Adventure",
+
+  "item.jurassicadventure.jurassic_guide": "Guia Jurássico",
+
+  "jurassicadventure.book.jurassic_guide.name": "Guia Jurássico",
+  "jurassicadventure.book.jurassic_guide.landing_text": "Bem-vindo ao Jurassic Adventure! Este guia irá te ajudar a navegar pelos primeiros passos da engenharia genética.",
+
+  "jurassicadventure.category.getting_started.name": "Primeiros Passos",
+  "jurassicadventure.category.getting_started.desc": "Tudo que você precisa para começar sua jornada.",
+
+  "jurassicadventure.entry.welcome.name": "Bem-Vindo!",
+  "jurassicadventure.page.welcome.text1": "Sua jornada para recriar magníficas criaturas de um passado distante começa aqui. A primeira ferramenta que você precisará é o Analisador, capaz de extrair fragmentos genéticos de âmbar."
+
 }
