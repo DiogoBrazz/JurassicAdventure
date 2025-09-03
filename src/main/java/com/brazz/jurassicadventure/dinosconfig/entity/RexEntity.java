@@ -70,7 +70,6 @@ public class RexEntity extends AllDinos {
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
     }
 
-    // --- LÓGICA DE CRESCIMENTO ---
     @Override
     protected void updateAttributesForAge() {
         AttributeInstance health = this.getAttribute(Attributes.MAX_HEALTH);
@@ -80,13 +79,16 @@ public class RexEntity extends AllDinos {
         health.removeModifiers();
         damage.removeModifiers();
 
-        float growthBonus = (float)this.ageInTicks / AllDinos.ADULT_AGE_TICKS;
+        // << USA A MESMA LÓGICA DO RENDERER >>
+        float progress = (float)(AllDinos.BABY_TO_JUVENILE_AGE - this.getAge()) / (float)AllDinos.BABY_TO_JUVENILE_AGE;
+        // Garante que o progresso não seja negativo se algo der errado
+        float growthBonus = Math.max(0, progress);
+
         health.addPermanentModifier(new AttributeModifier("growth_health", 180.0 * growthBonus, AttributeModifier.Operation.ADDITION));
         damage.addPermanentModifier(new AttributeModifier("growth_damage", 22.0 * growthBonus, AttributeModifier.Operation.ADDITION));
 
-        if (this.getHealth() > this.getMaxHealth()) {
-            this.setHealth(this.getMaxHealth());
-        }
+        // Cura o T-Rex para a nova vida máxima
+        this.setHealth(this.getMaxHealth());
     }
 
     // --- LÓGICA DE ANIMAÇÃO (GeckoLib) ---

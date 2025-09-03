@@ -87,6 +87,9 @@ public class ModItems {
         public static final RegistryObject<Item> BRACHIOSAURUS_SPAWN_EGG = ITEMS.register("brachiosaurus_spawn_egg",
             () -> new ForgeSpawnEggItem(() -> ModEntities.BRACHIOSAURUS.get(), 0x567d46, 0x2c3e2e, new Item.Properties()));
 
+        public static final RegistryObject<Item> MOSASSAURO_SPAWN_EGG = ITEMS.register("mosassauro_spawn_egg",
+            () -> new ForgeSpawnEggItem(() -> ModEntities.MOSASSAURO.get(), 0x567d46, 0x2c3e2e, new Item.Properties()));
+
         public static void register(IEventBus eventBus) {
                 ITEMS.register(eventBus);
     }

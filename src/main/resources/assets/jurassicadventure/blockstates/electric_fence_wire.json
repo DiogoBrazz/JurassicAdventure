@@ -4,21 +4,49 @@
       "when": { "up": "true" },
       "apply": { "model": "jurassicadventure:block/electric_fence_post" }
     },
+    
+ 
     {
-      "when": { "north": "low" },
-      "apply": { "model": "jurassicadventure:block/electric_fence_side", "uvlock": true }
+      "when": { "north": "true", "south": "true" },
+      "apply": { 
+        "model": "jurassicadventure:block/electric_fence_middle",
+        "y": 90
+      }
+    },
+    
+
+    {
+      "when": { "east": "true", "west": "true" },
+      "apply": {
+        "model": "jurassicadventure:block/electric_fence_middle"
+      }
+    },
+    
+  
+    {
+      "when": { "north": "true", "south": "false" },
+      "apply": { "model": "jurassicadventure:block/electric_fence_side" }
     },
     {
-      "when": { "east": "low" },
-      "apply": { "model": "jurassicadventure:block/electric_fence_side", "y": 90, "uvlock": true }
+      "when": { "south": "true", "north": "false" },
+      "apply": {
+        "model": "jurassicadventure:block/electric_fence_side",
+        "y": 180
+      }
     },
     {
-      "when": { "south": "low" },
-      "apply": { "model": "jurassicadventure:block/electric_fence_side", "y": 180, "uvlock": true }
+      "when": { "east": "true", "west": "false" },
+      "apply": {
+        "model": "jurassicadventure:block/electric_fence_side",
+        "y": 90
+      }
     },
     {
-      "when": { "west": "low" },
-      "apply": { "model": "jurassicadventure:block/electric_fence_side", "y": 270, "uvlock": true }
+      "when": { "west": "true", "east": "false" },
+      "apply": {
+        "model": "jurassicadventure:block/electric_fence_side",
+        "y": 270
+      }
     }
   ]
 }

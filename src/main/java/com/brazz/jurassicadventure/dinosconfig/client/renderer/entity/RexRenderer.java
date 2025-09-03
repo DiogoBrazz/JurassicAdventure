@@ -13,32 +13,25 @@ public class RexRenderer extends GeoEntityRenderer<RexEntity> {
         super(renderManager, new RexModel());
     }
 
-    // << A CORREÇÃO FINAL: Sobrescrevendo o método 'render' principal >>
     @Override
     public void render(RexEntity entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
-        
-        // 1. Nossa lógica de cálculo de escala continua a mesma e está perfeita.
         float scale;
-        AllDinos.AgeStage stage = entity.getAgeStage();
-
-        if (stage == AllDinos.AgeStage.ADULTO) {
-            scale = 1.0F; // Tamanho adulto final
-        } else {
-            // Interpolação para crescimento suave
-            float progress = (float)entity.getAgeInTicks() / AllDinos.ADULT_AGE_TICKS;
+        
+        if (entity.isBaby()) {
+            // << LÓGICA DE CÁLCULO DE ESCALA CORRIGIDA >>
+            // A idade de um bebê vai de -24000 (nascimento) até 0 (adulto).
+            // Esta fórmula converte essa contagem para um progresso de 0.0 a 1.0.
+            float progress = (float)(AllDinos.BABY_TO_JUVENILE_AGE - entity.getAge()) / (float)AllDinos.BABY_TO_JUVENILE_AGE;
+            
+            // Interpolação suave de 30% para 100% do tamanho.
             scale = 0.3F + (0.7F * progress);
+        } else {
+            scale = 1.0F; // Tamanho adulto
         }
 
-        // 2. Aplicamos a escala ANTES de qualquer outra coisa
-        poseStack.pushPose(); // Salva o estado atual da matriz de transformações
-        poseStack.scale(scale, scale, scale); // Aplica nossa escala
-
-        // 3. Chamamos o método 'render' original da classe pai (super)
-        // Isso diz ao GeckoLib para desenhar o dinossauro, mas usando a nossa PoseStack já modificada (escalada)
+        poseStack.pushPose();
+        poseStack.scale(scale, scale, scale);
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
-
-        // 4. Restauramos a matriz de transformações
-        // Isso é CRUCIAL para não afetar a renderização de outras entidades no jogo
         poseStack.popPose();
     }
 }

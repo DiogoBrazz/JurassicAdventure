@@ -22,6 +22,7 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
+import net.minecraftforge.common.ForgeMod; // Adicione este import se for usar SWIM_SPEED
 
 public class BrachiosaurusEntity extends Animal implements GeoEntity {
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
@@ -71,10 +72,25 @@ public class BrachiosaurusEntity extends Animal implements GeoEntity {
     }
 
     // O método 'createAttributes' agora usa 'Mob'
+    // Em BrachiosaurusEntity.java
+
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 60.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.35D);
+                // --- Atributos de Vida e Defesa (GRANDE) ---
+                .add(Attributes.MAX_HEALTH, 400.0D) // Vida extremamente alta (200 corações)
+                .add(Attributes.ARMOR, 18.0D) // Armadura natural muito forte, quase como diamante
+                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D) // 100% imune a ser empurrado por ataques
+
+                // --- Atributos de Movimento (PESADO) ---
+                .add(Attributes.MOVEMENT_SPEED, 0.13D) // Mais lento que um jogador (0.25)
+                .add(ForgeMod.SWIM_SPEED.get(), 0.8D)  // Nada de forma desajeitada
+
+                // --- Atributos de Combate (FORTE) ---
+                .add(Attributes.ATTACK_DAMAGE, 30.0D)      // Um dano de pisão ou cabeçada muito forte (10 corações)
+                .add(Attributes.ATTACK_KNOCKBACK, 3.0D)    // Empurra os alvos para muito longe com um ataque
+
+                // --- Atributos de IA ---
+                .add(Attributes.FOLLOW_RANGE, 24.0D);      // Não precisa de um grande alcance, pois é um herbívoro pacífico
     }
 
     @Override

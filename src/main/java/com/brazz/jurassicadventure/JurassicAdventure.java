@@ -1,10 +1,12 @@
 package com.brazz.jurassicadventure;
 
 import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.BrachiosaurusRenderer;
+import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.MosassauroRenderer;
 import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.RexRenderer;
 import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.RiverFrogRenderer;
 import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.VelociraptorRenderer;
 import com.brazz.jurassicadventure.dinosconfig.entity.BrachiosaurusEntity;
+import com.brazz.jurassicadventure.dinosconfig.entity.MosassauroEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.RexEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.RiverFrogEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.VelociraptorEntity;
@@ -57,6 +59,7 @@ public class JurassicAdventure {
         event.put(ModEntities.REX.get(), RexEntity.createAttributes().build());
         event.put(ModEntities.VELOCIRAPTOR.get(), VelociraptorEntity.createAttributes().build());
         event.put(ModEntities.BRACHIOSAURUS.get(), BrachiosaurusEntity.createAttributes().build());
+        event.put(ModEntities.MOSASSAURO.get(), MosassauroEntity.createAttributes().build());
     }
 
     // A classe de eventos do cliente
@@ -79,6 +82,7 @@ public class JurassicAdventure {
             EntityRenderers.register(ModEntities.REX.get(), RexRenderer::new);
             EntityRenderers.register(ModEntities.VELOCIRAPTOR.get(), VelociraptorRenderer::new);
             EntityRenderers.register(ModEntities.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
+            EntityRenderers.register(ModEntities.MOSASSAURO.get(), MosassauroRenderer::new);
         }
         @SubscribeEvent
         public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {

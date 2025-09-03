@@ -1,6 +1,7 @@
 package com.brazz.jurassicadventure;
 
 import com.brazz.jurassicadventure.dinosconfig.entity.BrachiosaurusEntity;
+import com.brazz.jurassicadventure.dinosconfig.entity.MosassauroEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.RexEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.RiverFrogEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.VelociraptorEntity;
@@ -23,7 +24,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<RexEntity>> REX =
         ENTITY_TYPES.register("rex", () -> EntityType.Builder.of(RexEntity::new, MobCategory.CREATURE)
-                .sized(0.4f, 0.5f) // Largura e Altura da hitbox
+                .sized(5f, 5f) // Largura e Altura da hitbox
                 .build("rex"));
 
     public static final RegistryObject<EntityType<VelociraptorEntity>> VELOCIRAPTOR =
@@ -35,6 +36,11 @@ public class ModEntities {
         ENTITY_TYPES.register("brachiosaurus", () -> EntityType.Builder.of(BrachiosaurusEntity::new, MobCategory.CREATURE)
                 .sized(6.5f, 10.0f) // Largura e Altura da hitbox
                 .build("brachiosaurus"));
+
+    public static final RegistryObject<EntityType<MosassauroEntity>> MOSASSAURO =
+        ENTITY_TYPES.register("mosassauro", () -> EntityType.Builder.of(MosassauroEntity::new, MobCategory.CREATURE)
+                .sized(3f, 4.0f) // Largura e Altura da hitbox
+                .build("mosassauro"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
