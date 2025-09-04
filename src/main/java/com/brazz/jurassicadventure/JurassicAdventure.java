@@ -67,28 +67,36 @@ public class JurassicAdventure {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            // Regista os ecrãs das nossas máquinas
+            // << CORRETO >>
+            // Este método agora é responsável apenas pelo registro de Menus (Screens)
+            // e Renderers de Block Entities.
             MenuScreens.register(ModMenuTypes.GENERATOR_MENU.get(), GeneratorScreen::new);
             MenuScreens.register(ModMenuTypes.ANALYZER_MENU.get(), AnalyzerScreen::new);
-            //Carregar o holograma do item
-            BlockEntityRenderers.register(ModBlockEntities.ANALYZER_BLOCK_ENTITY.get(), AnalyzerRenderer::new);
             MenuScreens.register(ModMenuTypes.SEQUENCER_MENU.get(), SequencerScreen::new);
             MenuScreens.register(ModMenuTypes.ASSEMBLER_MENU.get(), AssemblerScreen::new);
             MenuScreens.register(ModMenuTypes.INJECTOR_MENU.get(), InjectorScreen::new);
             MenuScreens.register(ModMenuTypes.MIXER_MENU.get(), MixerScreen::new);
             MenuScreens.register(ModMenuTypes.INCUBATOR_MENU.get(), IncubatorScreen::new);
-              
-            EntityRenderers.register(ModEntities.RIVER_FROG.get(), RiverFrogRenderer::new);
-            EntityRenderers.register(ModEntities.REX.get(), RexRenderer::new);
-            EntityRenderers.register(ModEntities.VELOCIRAPTOR.get(), VelociraptorRenderer::new);
-            EntityRenderers.register(ModEntities.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
-            EntityRenderers.register(ModEntities.MOSASSAURO.get(), MosassauroRenderer::new);
-        }
-        @SubscribeEvent
-        public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
             
+            BlockEntityRenderers.register(ModBlockEntities.ANALYZER_BLOCK_ENTITY.get(), AnalyzerRenderer::new);
+
+            // << AS LINHAS DE EntityRenderers FORAM MOVIDAS DAQUI >>
         }
 
-        
+        // << NOVO MÉTODO >>
+        // Este é o evento CORRETO e específico para registrar renderers de entidades.
+        @SubscribeEvent
+        public static void onRenderersRegister(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(ModEntities.RIVER_FROG.get(), RiverFrogRenderer::new);
+            event.registerEntityRenderer(ModEntities.REX.get(), RexRenderer::new);
+            event.registerEntityRenderer(ModEntities.VELOCIRAPTOR.get(), VelociraptorRenderer::new);
+            event.registerEntityRenderer(ModEntities.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
+            event.registerEntityRenderer(ModEntities.MOSASSAURO.get(), MosassauroRenderer::new);
+        }
+
+        @SubscribeEvent
+        public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            // Este método é para outra coisa (layers de modelos), pode continuar vazio.
+        }
     }
 }

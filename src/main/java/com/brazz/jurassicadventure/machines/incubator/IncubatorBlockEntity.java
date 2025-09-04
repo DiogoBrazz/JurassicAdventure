@@ -115,42 +115,44 @@ public class IncubatorBlockEntity extends BlockEntity implements MenuProvider {
         }
     }
 
+
     public void hatch() {
-        // Garante que estamos no servidor e no estado correto
         if (status != Status.READY_TO_HATCH || level == null || level.isClientSide()) {
             return;
         }
 
         ItemStack egg = itemHandler.getStackInSlot(0);
-        // Verificação de segurança extra: o ovo AINDA está aqui?
         if (egg.isEmpty() || egg.getItem() != ModItems.DINOSAUR_EGG.get()) {
-            // Se o jogador foi rápido e tirou o ovo, a máquina reseta.
             status = Status.EMPTY;
             progress = 0;
             setChanged();
             return;
         }
 
-        // Continua com a lógica de spawn, agora de forma segura
         if (egg.hasTag() && egg.getTag().contains("dino_type")) {
             String dinoId = egg.getTag().getString("dino_type");
-            
-            // Debug: Imprime no console qual dino estamos tentando criar
-            System.out.println("Tentando chocar o dinossauro com ID: " + dinoId);
-
             EntityType<?> entityType = ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(dinoId));
             
             if (entityType != null) {
-                entityType.spawn((ServerLevel) this.level, this.worldPosition.above(), MobSpawnType.SPAWN_EGG);
+                // --- A LÓGICA CORRETA DE SPAWN ---
+                
+                // 1. Cria um "pacote de dados" NBT para enviar com o spawn.
+                CompoundTag spawnData = new CompoundTag();
+                spawnData.putBoolean("IsIncubatorBaby", true); // Envia a "ordem": "Nasça como um bebê da incubadora"
 
+                // 2. Chama o método de spawn que aceita esses dados extras.
+                entityType.spawn((ServerLevel) this.level, spawnData, null, this.worldPosition.above(), 
+                                MobSpawnType.SPAWN_EGG, false, false);
+                
+                // ---------------------------------
+                
                 // Apenas reseta se o spawn foi bem-sucedido
                 itemHandler.extractItem(0, 1, false);
                 status = Status.EMPTY;
                 progress = 0;
                 setChanged();
             } else {
-                // Debug: Avisa no console se o ID do dino for inválido
-                System.out.println("ERRO: Dino com ID '" + dinoId + "' não encontrado no registro de entidades!");
+                System.out.println("ERRO: Dino com ID '" + dinoId + "' não encontrado!");
             }
         }
     }

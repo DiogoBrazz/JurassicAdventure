@@ -18,10 +18,13 @@ public class RexRenderer extends GeoEntityRenderer<RexEntity> {
         float scale;
         
         if (entity.isBaby()) {
-            // Progresso de crescimento (0.0 a 1.0)
-            float progress = 1.0f - ((float) entity.getAge() / (float) AllDinos.BABY_TO_JUVENILE_AGE);
+            // << CORREÇÃO MATEMÁTICA: Esta é a fórmula correta para o progresso >>
+            // A idade vai de um número negativo alto até 0. Esta fórmula converte isso para uma porcentagem de 0.0 a 1.0.
+            float progress = 1.0f + ((float) entity.getAge() / (float) -AllDinos.BABY_TO_JUVENILE_AGE);
             
-            // Interpolação suave de 30% para 100% do tamanho
+            // Garante que o progresso nunca saia do intervalo [0, 1]
+            progress = Math.max(0, Math.min(1, progress));
+
             scale = 0.3F + (0.7F * progress);
         } else {
             scale = 1.0F; // Tamanho adulto
