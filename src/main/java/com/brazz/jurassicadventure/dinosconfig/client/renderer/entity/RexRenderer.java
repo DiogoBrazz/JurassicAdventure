@@ -18,12 +18,10 @@ public class RexRenderer extends GeoEntityRenderer<RexEntity> {
         float scale;
         
         if (entity.isBaby()) {
-            // << LÓGICA DE CÁLCULO DE ESCALA CORRIGIDA >>
-            // A idade de um bebê vai de -24000 (nascimento) até 0 (adulto).
-            // Esta fórmula converte essa contagem para um progresso de 0.0 a 1.0.
-            float progress = (float)(AllDinos.BABY_TO_JUVENILE_AGE - entity.getAge()) / (float)AllDinos.BABY_TO_JUVENILE_AGE;
+            // Progresso de crescimento (0.0 a 1.0)
+            float progress = 1.0f - ((float) entity.getAge() / (float) AllDinos.BABY_TO_JUVENILE_AGE);
             
-            // Interpolação suave de 30% para 100% do tamanho.
+            // Interpolação suave de 30% para 100% do tamanho
             scale = 0.3F + (0.7F * progress);
         } else {
             scale = 1.0F; // Tamanho adulto

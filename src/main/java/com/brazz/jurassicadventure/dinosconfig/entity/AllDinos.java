@@ -1,5 +1,12 @@
 package com.brazz.jurassicadventure.dinosconfig.entity;
 
+// --- IMPORTS ADICIONADOS ---
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+// --- FIM DOS IMPORTS ADICIONADOS ---
+
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.Level;
@@ -8,55 +15,53 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.UUID;
+
 public abstract class AllDinos extends Animal implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    // --- NOVO SISTEMA DE IDADE ---
     public enum AgeStage { BEBE, JUVENIL, ADULTO }
-
-    // Idade em que um bebê se torna juvenil (em ticks negativos). Padrão do Minecraft é 20 min.
-    public static final int BABY_TO_JUVENILE_AGE = -24000; 
-    // Idade em que um juvenil se torna adulto (0).
+    public static final int BABY_TO_JUVENILE_AGE = -24000;
     public static final int JUVENILE_TO_ADULT_AGE = 0;
 
     protected AllDinos(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
     
-    // << REMOVIDO: Não precisamos mais salvar/carregar 'ageInTicks', a classe Animal já faz isso com a sua idade interna. >>
-
+    // << ALTERADO: Não precisamos mais do nosso 'ageInTicks', pois usamos o sistema do Minecraft >>
+    
     @Override
     public void aiStep() {
-        // << ALTERADO: A lógica agora está muito mais simples >>
         AgeStage previousStage = getAgeStage();
         
-        // A chamada super.aiStep() JÁ CUIDA de incrementar a idade do animal a cada tick!
+        // A chamada super.aiStep() JÁ CUIDA de incrementar a idade do animal a cada tick.
         super.aiStep();
 
         if (!this.level().isClientSide()) {
-            // Se o estágio mudou (ex: de BEBE para JUVENIL)...
+            // << MELHORIA: Atualiza os atributos periodicamente (a cada 5 segundos) para um crescimento de força mais suave >>
+            if (this.tickCount % 100 == 0) {
+                this.updateAttributesForAge();
+            }
+            
+            // Se o estágio mudou, força uma atualização imediata da hitbox e dos atributos.
             if (getAgeStage() != previousStage) {
-                // ...atualiza tudo.
                 this.refreshDimensions();
                 this.updateAttributesForAge();
             }
         }
     }
     
+    // Método que as classes filhas são obrigadas a implementar.
     protected abstract void updateAttributesForAge();
 
-    // << ALTERADO: Agora usa a idade do Minecraft >>
-    // O método isBaby() da classe Animal já funciona perfeitamente (verifica se a idade é < 0)
-    
-    // Getter para a "lupa" poder usar no futuro
     public AgeStage getAgeStage() {
-        int age = this.getAge(); // Usa o método getAge() do Minecraft
-        if (age < JUVENILE_TO_ADULT_AGE) return AgeStage.BEBE; // A idade é negativa
-        // Você pode adicionar uma lógica para JUVENIL aqui se quiser, mas por agora vamos simplificar
+        int age = this.getAge();
+        if (age < JUVENILE_TO_ADULT_AGE) return AgeStage.BEBE;
+        // A lógica para JUVENIL pode ser adicionada aqui se você mudar a constante BABY_TO_JUVENILE_AGE
         return AgeStage.ADULTO;
     }
     
-    // --- LÓGICA DO GECKOLIB (continua a mesma) ---
+    // --- LÓGICA DO GECKOLIB ---
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {}
     @Override
