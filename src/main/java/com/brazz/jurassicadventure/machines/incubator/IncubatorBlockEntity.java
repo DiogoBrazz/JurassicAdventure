@@ -140,6 +140,8 @@ public class IncubatorBlockEntity extends BlockEntity implements MenuProvider {
                 CompoundTag spawnData = new CompoundTag();
                 spawnData.putBoolean("IsIncubatorBaby", true); // Envia a "ordem": "Nasça como um bebê da incubadora"
 
+                System.out.println("INCUBADORA: Enviando ordem 'IsIncubatorBaby: true' para o spawn.");
+
                 // 2. Chama o método de spawn que aceita esses dados extras.
                 entityType.spawn((ServerLevel) this.level, spawnData, null, this.worldPosition.above(), 
                                 MobSpawnType.SPAWN_EGG, false, false);

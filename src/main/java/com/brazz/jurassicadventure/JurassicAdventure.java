@@ -86,7 +86,7 @@ public class JurassicAdventure {
         // << NOVO MÉTODO >>
         // Este é o evento CORRETO e específico para registrar renderers de entidades.
         @SubscribeEvent
-        public static void onRenderersRegister(EntityRenderersEvent.RegisterRenderers event) {
+        public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(ModEntities.RIVER_FROG.get(), RiverFrogRenderer::new);
             event.registerEntityRenderer(ModEntities.REX.get(), RexRenderer::new);
             event.registerEntityRenderer(ModEntities.VELOCIRAPTOR.get(), VelociraptorRenderer::new);

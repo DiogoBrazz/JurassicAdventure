@@ -13,6 +13,10 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import org.jetbrains.annotations.Nullable;
+import java.util.UUID;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -20,14 +24,10 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.entity.player.Player;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
-import java.util.UUID;
 
 public class RexEntity extends AllDinos {
 
@@ -39,63 +39,31 @@ public class RexEntity extends AllDinos {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        // Usar Mob.createMobAttributes() é a forma mais fundamental e segura
+        // << CORREÇÃO FINAL: Usar Mob.createMobAttributes() é a forma mais segura >>
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 20.0D) // Vida de bebê
+                .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.25D)
-                .add(Attributes.ATTACK_DAMAGE, 3.0D) // Dano de bebê
+                .add(Attributes.ATTACK_DAMAGE, 3.0D)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.0D)
-                .add(Attributes.FOLLOW_RANGE, 32.0D); // Alcance da IA
+                .add(Attributes.FOLLOW_RANGE, 32.0D);
     }
     
-    // << CORREÇÃO PRINCIPAL: Este método controla o spawn >>
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-        
-        // Verifica se recebemos a "ordem" da incubadora.
         boolean isFromIncubator = pDataTag != null && pDataTag.getBoolean("IsIncubatorBaby");
         
-        // Se a razão do spawn for reprodução OU se veio da incubadora, nasce bebê.
-        if (pReason == MobSpawnType.BREEDING || isFromIncubator) {
-            this.setAge(BABY_TO_JUVENILE_AGE); // Força a ser bebê
-        } else {
-            // Para todos os outros casos (ovo de spawn, comando /summon), nasce adulto.
+        if (isFromIncubator) {
+            this.setAge(MAX_BABY_AGE);
+        } else if (pReason != MobSpawnType.BREEDING) {
+            // Só vira adulto se não for de reprodução E não for da incubadora
             this.setAge(0);
         }
         
         this.updateAttributesForAge();
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
-
-    @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.of(Items.BEEF), false));
-        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 1.0D));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-
-        this.goalSelector.addGoal(1, new PanicGoal(this, 1.5D) {
-            @Override
-            public boolean canUse() {
-                return RexEntity.this.isBaby() && super.canUse();
-            }
-        });
-
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2D, false) {
-            @Override
-            public boolean canUse() {
-                return !RexEntity.this.isBaby() && super.canUse();
-            }
-        });
-        
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, (target) -> !this.isBaby()));
-        
-        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-    }
-
+    
     @Override
     protected void updateAttributesForAge() {
         AttributeInstance health = this.getAttribute(Attributes.MAX_HEALTH);
@@ -106,9 +74,14 @@ public class RexEntity extends AllDinos {
         damage.removeModifier(DAMAGE_MODIFIER_ID);
 
         if (this.isBaby()) {
-            float progress = 1.0f - ((float) this.getAge() / (float) BABY_TO_JUVENILE_AGE);
+            // A idade vai de -24000 (nascimento) a -1 (quase adulto)
+            // Esta fórmula converte para um progresso de 0.0 a 1.0
+            float progress = 1.0f + ((float) this.getAge() / (float) -MAX_BABY_AGE);
+            
+            // Garante que o progresso nunca saia do intervalo [0, 1]
             float growthBonus = Math.max(0, Math.min(1, progress));
 
+            // Usa a variável 'growthBonus' que acabamos de declarar
             double healthBonus = 180.0 * growthBonus;
             double damageBonus = 22.0 * growthBonus;
 
@@ -146,7 +119,6 @@ public class RexEntity extends AllDinos {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        // A lógica do Minecraft já garante que o filhote gerado aqui terá a idade de bebê (-24000)
         return ModEntities.REX.get().create(pLevel);
     }
 }
