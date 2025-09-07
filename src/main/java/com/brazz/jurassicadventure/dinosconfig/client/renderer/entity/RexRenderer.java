@@ -1,32 +1,48 @@
 package com.brazz.jurassicadventure.dinosconfig.client.renderer.entity;
 
-import com.brazz.jurassicadventure.dinosconfig.entity.AllDinos;
-import com.brazz.jurassicadventure.dinosconfig.entity.RexEntity;
+import com.brazz.jurassicadventure.JurassicAdventure;
 import com.brazz.jurassicadventure.dinosconfig.client.model.RexModel;
+import com.brazz.jurassicadventure.dinosconfig.entity.RexEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class RexRenderer extends GeoEntityRenderer<RexEntity> {
-    
     public RexRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new RexModel());
+        // Define a sombra baseada no tamanho inicial (ela não muda dinamicamente por padrão)
+        this.shadowRadius = 0.5f;
     }
 
     @Override
-    public void render(RexEntity entity, float entityYaw, float partialTick, PoseStack poseStack, 
-                      MultiBufferSource bufferSource, int packedLight) {
+    public ResourceLocation getTextureLocation(RexEntity animatable) {
+        // Este método já busca a textura do RexModel, está correto.
+        return new ResourceLocation(JurassicAdventure.MODID, "textures/entity/rex.png");
+    }
+
+    // --- NOVO CÓDIGO COMEÇA AQUI ---
+
+    @Override
+    public void render(RexEntity entity, float entityYaw, float partialTick, PoseStack poseStack,
+                       MultiBufferSource bufferSource, int packedLight) {
+
+        // 1. Pega a escala calculada na RexEntity
         float scale = entity.getScale();
         
-        poseStack.pushPose();
-        poseStack.scale(scale, scale, scale);
-        
-        if (entity.isBaby()) {
-            poseStack.translate(0, (1.0 - scale) * 0.5, 0);
-        }
-        
+        // 2. Atualiza o raio da sombra se quiser
+        this.shadowRadius = 0.5f * scale;
+
+        // 3. Aplica a escala na "matriz de pose". Isso afeta tudo que for renderizado depois.
+        poseStack.pushPose(); // Salva o estado atual da matriz
+        poseStack.scale(scale, scale, scale); // Aplica a nossa escala
+
+        // 4. Chama o método original da GeckoLib para renderizar o modelo, mas já com a escala aplicada
         super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
-        poseStack.popPose();
+        
+        poseStack.popPose(); // Restaura a matriz para não afetar outros renders
     }
+
+    // --- FIM DO NOVO CÓDIGO ---
 }

@@ -24,7 +24,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<RexEntity>> REX =
         ENTITY_TYPES.register("rex", () -> EntityType.Builder.of(RexEntity::new, MobCategory.CREATURE)
-                .sized(5f, 5f) // Largura e Altura da hitbox
+                .sized(3.0f, 5.0f) // Largura e Altura da hitbox
                 .build("rex"));
 
     public static final RegistryObject<EntityType<VelociraptorEntity>> VELOCIRAPTOR =

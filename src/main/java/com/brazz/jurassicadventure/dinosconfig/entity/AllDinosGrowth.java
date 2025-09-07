@@ -8,13 +8,13 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public abstract class AllDinos extends Animal implements GeoEntity {
+public abstract class AllDinosGrowth extends Animal implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public static final int MAX_BABY_AGE = -24000;
     public static final int ADULT_AGE = 0;
 
-    protected AllDinos(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    protected AllDinosGrowth(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
     
