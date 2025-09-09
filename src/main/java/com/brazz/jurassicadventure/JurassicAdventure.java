@@ -1,14 +1,24 @@
 package com.brazz.jurassicadventure;
 
+import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.AllosaurusRenderer;
+import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.AnkylosaurusRenderer;
 import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.BrachiosaurusRenderer;
+import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.GallimimusRenderer;
 import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.MosassauroRenderer;
 import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.RexRenderer;
 import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.RiverFrogRenderer;
+import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.StegosaurusRenderer;
+import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.TriceratopsRenderer;
 import com.brazz.jurassicadventure.dinosconfig.client.renderer.entity.VelociraptorRenderer;
+import com.brazz.jurassicadventure.dinosconfig.entity.AllosaurusEntity;
+import com.brazz.jurassicadventure.dinosconfig.entity.AnkylosaurusEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.BrachiosaurusEntity;
+import com.brazz.jurassicadventure.dinosconfig.entity.GallimimusEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.MosassauroEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.RexEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.RiverFrogEntity;
+import com.brazz.jurassicadventure.dinosconfig.entity.StegosaurusEntity;
+import com.brazz.jurassicadventure.dinosconfig.entity.TriceratopsEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.VelociraptorEntity;
 import com.brazz.jurassicadventure.machines.analyzer.AnalyzerRenderer;
 import com.brazz.jurassicadventure.machines.analyzer.AnalyzerScreen;
@@ -31,11 +41,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib.GeckoLib;
 import com.brazz.jurassicadventure.network.ModMessages;
-import com.brazz.jurassicadventure.worldgen.ModPlacedFeatures;
-
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 
 
 
@@ -67,6 +72,11 @@ public class JurassicAdventure {
         event.put(ModEntities.VELOCIRAPTOR.get(), VelociraptorEntity.createAttributes().build());
         event.put(ModEntities.BRACHIOSAURUS.get(), BrachiosaurusEntity.createAttributes().build());
         event.put(ModEntities.MOSASSAURO.get(), MosassauroEntity.createAttributes().build());
+        event.put(ModEntities.ALLOSAURUS.get(), AllosaurusEntity.createAttributes().build());
+        event.put(ModEntities.ANKYLOSAURUS.get(), AnkylosaurusEntity.createAttributes().build());
+        event.put(ModEntities.GALLIMIMUS.get(), GallimimusEntity.createAttributes().build());
+        event.put(ModEntities.TRICERATOPS.get(), TriceratopsEntity.createAttributes().build());
+        event.put(ModEntities.STEGOSAURUS.get(), StegosaurusEntity.createAttributes().build());
     }
 
     // A classe de eventos do cliente
@@ -99,6 +109,11 @@ public class JurassicAdventure {
             event.registerEntityRenderer(ModEntities.VELOCIRAPTOR.get(), VelociraptorRenderer::new);
             event.registerEntityRenderer(ModEntities.BRACHIOSAURUS.get(), BrachiosaurusRenderer::new);
             event.registerEntityRenderer(ModEntities.MOSASSAURO.get(), MosassauroRenderer::new);
+            event.registerEntityRenderer(ModEntities.ALLOSAURUS.get(), AllosaurusRenderer::new);
+            event.registerEntityRenderer(ModEntities.ANKYLOSAURUS.get(), AnkylosaurusRenderer::new);
+            event.registerEntityRenderer(ModEntities.GALLIMIMUS.get(), GallimimusRenderer::new);
+            event.registerEntityRenderer(ModEntities.TRICERATOPS.get(), TriceratopsRenderer::new);
+            event.registerEntityRenderer(ModEntities.STEGOSAURUS.get(), StegosaurusRenderer::new);
         }
 
         @SubscribeEvent

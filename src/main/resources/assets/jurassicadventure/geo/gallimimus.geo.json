@@ -1,0 +1,134 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.FA-TR_Galli",
+				"texture_width": 132,
+				"texture_height": 128,
+				"visible_bounds_width": 12,
+				"visible_bounds_height": 5.5,
+				"visible_bounds_offset": [0, 2.25, 0]
+			},
+			"bones": [
+				{
+					"name": "gallimimus",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "body",
+					"parent": "gallimimus",
+					"pivot": [0, 36, 5],
+					"cubes": [
+						{"origin": [-5, 27, -8], "size": [10, 18, 21], "uv": [38, 89]}
+					]
+				},
+				{
+					"name": "body_connected_to_neck",
+					"parent": "body",
+					"pivot": [0, 40, -6],
+					"cubes": [
+						{"origin": [-4, 29, -18], "size": [8, 14, 11], "pivot": [0, 36, 5], "rotation": [-10, 0, 0], "uv": [0, 103]}
+					]
+				},
+				{
+					"name": "right_arm",
+					"parent": "body_connected_to_neck",
+					"pivot": [-4.001, 37.3297, -14.05864],
+					"cubes": [
+						{"origin": [-4, 12.3297, -14.05864], "size": [0, 25, 3], "pivot": [-4.001, 37.3297, -14.05864], "rotation": [-9.54589, 2.99318, 17.25002], "uv": [0, 18]}
+					]
+				},
+				{
+					"name": "left_arm",
+					"parent": "body_connected_to_neck",
+					"pivot": [-4.001, 37.3297, -14.05864],
+					"cubes": [
+						{"origin": [4, 12.3297, -14.05864], "size": [0, 25, 3], "pivot": [4.001, 37.3297, -14.05864], "rotation": [-9.54589, -2.99318, -17.25002], "uv": [0, 18], "mirror": true}
+					]
+				},
+				{
+					"name": "neck_connected_to_head",
+					"parent": "body_connected_to_neck",
+					"pivot": [0, 43, -17],
+					"cubes": [
+						{"origin": [-2, 40, -20], "size": [4, 25, 4], "pivot": [0, 43, -17], "rotation": [-7.5, 0, 0], "uv": [112, 0]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "neck_connected_to_head",
+					"pivot": [0, 65, -15],
+					"cubes": [
+						{"origin": [-3, 64, -20], "size": [6, 7, 7], "uv": [0, 0]},
+						{"origin": [-1.5, 64, -27], "size": [3, 4, 7], "uv": [26, 0]}
+					]
+				},
+				{
+					"name": "tail_connected_to_body",
+					"parent": "body",
+					"pivot": [0, 39, 12],
+					"cubes": [
+						{"origin": [-3, 34, 13], "size": [6, 11, 14], "uv": [0, 78]}
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "tail_connected_to_body",
+					"pivot": [0, 39, 24],
+					"cubes": [
+						{"origin": [-2, 37, 27], "size": [4, 5, 62], "uv": [0, 11]}
+					]
+				},
+				{
+					"name": "right_leg",
+					"parent": "gallimimus",
+					"pivot": [8, 36, 5],
+					"cubes": [
+						{"origin": [5, 24, -2], "size": [6, 14, 12], "uv": [0, 47], "mirror": true}
+					]
+				},
+				{
+					"name": "right_knee",
+					"parent": "right_leg",
+					"pivot": [7, 28, 8],
+					"cubes": [
+						{"origin": [5, 0, 7], "size": [3, 30, 5], "pivot": [8, 28, 10], "rotation": [-12.5, 0, 0], "uv": [116, 38], "mirror": true}
+					]
+				},
+				{
+					"name": "right_foot",
+					"parent": "right_knee",
+					"pivot": [6.5, 2, 3],
+					"cubes": [
+						{"origin": [4, 0, -3], "size": [5, 2, 9], "uv": [84, 0], "mirror": true}
+					]
+				},
+				{
+					"name": "left_leg",
+					"parent": "gallimimus",
+					"pivot": [-8, 36, 5],
+					"cubes": [
+						{"origin": [-11, 24, -2], "size": [6, 14, 12], "uv": [0, 47]}
+					]
+				},
+				{
+					"name": "left_knee",
+					"parent": "left_leg",
+					"pivot": [-7, 28, 8],
+					"cubes": [
+						{"origin": [-8, 0, 7], "size": [3, 30, 5], "pivot": [-8, 28, 10], "rotation": [-12.5, 0, 0], "uv": [116, 38]}
+					]
+				},
+				{
+					"name": "left_foot",
+					"parent": "left_knee",
+					"pivot": [-6.5, 2, 3],
+					"cubes": [
+						{"origin": [-9, 0, -3], "size": [5, 2, 9], "uv": [84, 0]}
+					]
+				}
+			]
+		}
+	]
+}

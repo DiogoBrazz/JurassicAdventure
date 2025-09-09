@@ -79,20 +79,47 @@ public class ModItems {
                 .meat()
                 .build())));
 
+        // RIVER FROG
         public static final RegistryObject<Item> RIVER_FROG_SPAWN_EGG = ITEMS.register("river_frog_spawn_egg",
-            () -> new ForgeSpawnEggItem(() -> ModEntities.RIVER_FROG.get(), 0x567d46, 0x2c3e2e, new Item.Properties()));
+                () -> new ForgeSpawnEggItem(() -> ModEntities.RIVER_FROG.get(), 0x348C31, 0xC8B732, new Item.Properties()));
 
+        // REX
         public static final RegistryObject<Item> REX_SPAWN_EGG = ITEMS.register("rex_spawn_egg",
-            () -> new ForgeSpawnEggItem(() -> ModEntities.REX.get(), 0x567d46, 0x2c3e2e, new Item.Properties()));
+                () -> new ForgeSpawnEggItem(() -> ModEntities.REX.get(), 0x8B4513, 0x5C2E2E, new Item.Properties()));
 
+        // VELOCIRAPTOR
         public static final RegistryObject<Item> VELOCIRAPTOR_SPAWN_EGG = ITEMS.register("velociraptor_spawn_egg",
-            () -> new ForgeSpawnEggItem(() -> ModEntities.VELOCIRAPTOR.get(), 0x567d46, 0x2c3e2e, new Item.Properties()));
+                () -> new ForgeSpawnEggItem(() -> ModEntities.VELOCIRAPTOR.get(), 0x9F8C76, 0x785A46, new Item.Properties()));
 
+        // BRACHIOSAURUS
         public static final RegistryObject<Item> BRACHIOSAURUS_SPAWN_EGG = ITEMS.register("brachiosaurus_spawn_egg",
-            () -> new ForgeSpawnEggItem(() -> ModEntities.BRACHIOSAURUS.get(), 0x567d46, 0x2c3e2e, new Item.Properties()));
+                () -> new ForgeSpawnEggItem(() -> ModEntities.BRACHIOSAURUS.get(), 0x79828A, 0xD1D1D1, new Item.Properties()));
 
+        // MOSASSAURO
         public static final RegistryObject<Item> MOSASSAURO_SPAWN_EGG = ITEMS.register("mosassauro_spawn_egg",
-            () -> new ForgeSpawnEggItem(() -> ModEntities.MOSASSAURO.get(), 0x567d46, 0x2c3e2e, new Item.Properties()));
+                () -> new ForgeSpawnEggItem(() -> ModEntities.MOSASSAURO.get(), 0x3B5998, 0x888888, new Item.Properties()));
+
+        // ALLOSAURUS
+        public static final RegistryObject<Item> ALLOSAURUS_SPAWN_EGG = ITEMS.register("allosaurus_spawn_egg",
+                () -> new ForgeSpawnEggItem(() -> ModEntities.ALLOSAURUS.get(), 0x7d6650, 0x4a3c2f, new Item.Properties()));
+
+        // ANKYLOSAURUS
+        public static final RegistryObject<Item> ANKYLOSAURUS_SPAWN_EGG = ITEMS.register("ankylosaurus_spawn_egg",
+                () -> new ForgeSpawnEggItem(() -> ModEntities.ANKYLOSAURUS.get(), 0x8a8a8a, 0x5e5e5e, new Item.Properties()));
+
+        // GALLIMIMUS
+        public static final RegistryObject<Item> GALLIMIMUS_SPAWN_EGG = ITEMS.register("gallimimus_spawn_egg",
+                () -> new ForgeSpawnEggItem(() -> ModEntities.GALLIMIMUS.get(), 0xc2a878, 0x7a633a, new Item.Properties()));
+
+        // TRICERATOPS
+        public static final RegistryObject<Item> TRICERATOPS_SPAWN_EGG = ITEMS.register("triceratops_spawn_egg",
+                () -> new ForgeSpawnEggItem(() -> ModEntities.TRICERATOPS.get(), 0x637063, 0x4a544a, new Item.Properties()));
+
+        // STEGOSAURUS
+        public static final RegistryObject<Item> STEGOSAURUS_SPAWN_EGG = ITEMS.register("stegosaurus_spawn_egg",
+                () -> new ForgeSpawnEggItem(() -> ModEntities.STEGOSAURUS.get(), 0x556b2f, 0x8b4513, new Item.Properties()));
+
+
 
         public static void register(IEventBus eventBus) {
                 ITEMS.register(eventBus);

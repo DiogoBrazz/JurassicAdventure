@@ -1,9 +1,14 @@
 package com.brazz.jurassicadventure;
 
+import com.brazz.jurassicadventure.dinosconfig.entity.AllosaurusEntity;
+import com.brazz.jurassicadventure.dinosconfig.entity.AnkylosaurusEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.BrachiosaurusEntity;
+import com.brazz.jurassicadventure.dinosconfig.entity.GallimimusEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.MosassauroEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.RexEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.RiverFrogEntity;
+import com.brazz.jurassicadventure.dinosconfig.entity.StegosaurusEntity;
+import com.brazz.jurassicadventure.dinosconfig.entity.TriceratopsEntity;
 import com.brazz.jurassicadventure.dinosconfig.entity.VelociraptorEntity;
 
 import net.minecraft.world.entity.EntityType;
@@ -41,6 +46,33 @@ public class ModEntities {
         ENTITY_TYPES.register("mosassauro", () -> EntityType.Builder.of(MosassauroEntity::new, MobCategory.CREATURE)
                 .sized(MosassauroEntity.ADULT_WIDTH, MosassauroEntity.ADULT_HEIGHT)
                 .build("mosassauro"));
+
+    //--------------
+
+    public static final RegistryObject<EntityType<AllosaurusEntity>> ALLOSAURUS =
+    ENTITY_TYPES.register("allosaurus", () -> EntityType.Builder.of(AllosaurusEntity::new, MobCategory.CREATURE)
+            .sized(AllosaurusEntity.ADULT_WIDTH, AllosaurusEntity.ADULT_HEIGHT)
+            .build("allosaurus"));
+
+    public static final RegistryObject<EntityType<AnkylosaurusEntity>> ANKYLOSAURUS =
+    ENTITY_TYPES.register("ankylosaurus", () -> EntityType.Builder.of(AnkylosaurusEntity::new, MobCategory.CREATURE)
+            .sized(AnkylosaurusEntity.ADULT_WIDTH, AnkylosaurusEntity.ADULT_HEIGHT)
+            .build("ankylosaurus"));
+
+    public static final RegistryObject<EntityType<GallimimusEntity>> GALLIMIMUS =
+    ENTITY_TYPES.register("gallimimus", () -> EntityType.Builder.of(GallimimusEntity::new, MobCategory.CREATURE)
+            .sized(GallimimusEntity.ADULT_WIDTH, GallimimusEntity.ADULT_HEIGHT)
+            .build("gallimimus"));
+
+    public static final RegistryObject<EntityType<TriceratopsEntity>> TRICERATOPS =
+    ENTITY_TYPES.register("triceratops", () -> EntityType.Builder.of(TriceratopsEntity::new, MobCategory.CREATURE)
+            .sized(TriceratopsEntity.ADULT_WIDTH, TriceratopsEntity.ADULT_HEIGHT)
+            .build("triceratops"));
+
+    public static final RegistryObject<EntityType<StegosaurusEntity>> STEGOSAURUS =
+    ENTITY_TYPES.register("stegosaurus", () -> EntityType.Builder.of(StegosaurusEntity::new, MobCategory.CREATURE)
+            .sized(StegosaurusEntity.ADULT_WIDTH, StegosaurusEntity.ADULT_HEIGHT)
+            .build("stegosaurus"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -89,6 +89,11 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.VELOCIRAPTOR_SPAWN_EGG.get());
                         pOutput.accept(ModItems.BRACHIOSAURUS_SPAWN_EGG.get());
                         pOutput.accept(ModItems.MOSASSAURO_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.ALLOSAURUS_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.ANKYLOSAURUS_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.GALLIMIMUS_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.TRICERATOPS_SPAWN_EGG.get());
+                        pOutput.accept(ModItems.STEGOSAURUS_SPAWN_EGG.get());
 
                         //BLOCKS
                         pOutput.accept(ModBlocks.AMBER_ORE.get());
