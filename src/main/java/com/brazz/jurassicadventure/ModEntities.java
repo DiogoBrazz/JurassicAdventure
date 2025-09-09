@@ -24,22 +24,22 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<RexEntity>> REX =
         ENTITY_TYPES.register("rex", () -> EntityType.Builder.of(RexEntity::new, MobCategory.CREATURE)
-                .sized(3.0f, 5.0f) // Largura e Altura da hitbox
+                .sized(RexEntity.ADULT_WIDTH, RexEntity.ADULT_HEIGHT)
                 .build("rex"));
 
     public static final RegistryObject<EntityType<VelociraptorEntity>> VELOCIRAPTOR =
         ENTITY_TYPES.register("velociraptor", () -> EntityType.Builder.of(VelociraptorEntity::new, MobCategory.CREATURE)
-                .sized(0.4f, 0.5f) // Largura e Altura da hitbox
+                .sized(VelociraptorEntity.ADULT_WIDTH, VelociraptorEntity.ADULT_HEIGHT)
                 .build("velociraptor"));
 
     public static final RegistryObject<EntityType<BrachiosaurusEntity>> BRACHIOSAURUS =
         ENTITY_TYPES.register("brachiosaurus", () -> EntityType.Builder.of(BrachiosaurusEntity::new, MobCategory.CREATURE)
-                .sized(6.5f, 10.0f) // Largura e Altura da hitbox
+                .sized(BrachiosaurusEntity.ADULT_WIDTH, BrachiosaurusEntity.ADULT_HEIGHT)
                 .build("brachiosaurus"));
 
     public static final RegistryObject<EntityType<MosassauroEntity>> MOSASSAURO =
         ENTITY_TYPES.register("mosassauro", () -> EntityType.Builder.of(MosassauroEntity::new, MobCategory.CREATURE)
-                .sized(3f, 4.0f) // Largura e Altura da hitbox
+                .sized(MosassauroEntity.ADULT_WIDTH, MosassauroEntity.ADULT_HEIGHT)
                 .build("mosassauro"));
 
     public static void register(IEventBus eventBus) {

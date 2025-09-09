@@ -2,6 +2,7 @@ package com.brazz.jurassicadventure;
 
 import com.brazz.jurassicadventure.item.EmbryoSyringeItem;
 import com.brazz.jurassicadventure.item.GeneticInfoItem;
+import com.brazz.jurassicadventure.item.LupaItem;
 
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -57,8 +58,11 @@ public class ModItems {
         public static final RegistryObject<Item> DINOSAUR_EGG = ITEMS.register("dinosaur_egg",
             () -> new GeneticInfoItem(new Item.Properties().stacksTo(1)));
 
+        public static final RegistryObject<Item> LUPA = ITEMS.register("lupa",
+            () -> new LupaItem(new Item.Properties()));
+
         public static final RegistryObject<Item> JURASSIC_GUIDE = ITEMS.register("jurassic_guide",
-        () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties()));
 
 
         public static final RegistryObject<Item> FROG_MEAT = ITEMS.register("frog_meat",

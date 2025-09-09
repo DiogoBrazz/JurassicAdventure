@@ -31,6 +31,9 @@ public class ModBlocks {
         public static final RegistryObject<Block> AMBER_ORE = registerBlock("amber_ore",
                         () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)));
 
+        public static final RegistryObject<Block> DEEPSLATE_AMBER_ORE = registerBlock("deepslate_amber_ore",
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)));
+
         // --- MÁQUINAS ---
 
         public static final RegistryObject<Block> GENERATOR = registerBlock("generator",

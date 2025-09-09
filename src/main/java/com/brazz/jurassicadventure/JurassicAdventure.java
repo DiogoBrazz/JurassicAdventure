@@ -21,7 +21,6 @@ import com.brazz.jurassicadventure.machines.sequencer.SequencerScreen;
 
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent; // <-- NOVA IMPORTAÇÃO
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -32,6 +31,13 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib.GeckoLib;
 import com.brazz.jurassicadventure.network.ModMessages;
+import com.brazz.jurassicadventure.worldgen.ModPlacedFeatures;
+
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
+
+
 
 @Mod(JurassicAdventure.MODID)
 public class JurassicAdventure {
@@ -52,6 +58,7 @@ public class JurassicAdventure {
 
         // regista os atributos do mob.
         modEventBus.addListener(this::entityAttributeEvent);
+
     }
 
     private void entityAttributeEvent(final EntityAttributeCreationEvent event) {

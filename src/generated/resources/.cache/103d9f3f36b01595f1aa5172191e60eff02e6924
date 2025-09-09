@@ -1,0 +1,4 @@
+// 1.20.1	2025-09-08T13:30:38.4812001	Registries
+638822624f6caaac2687126ed195c4968dc3978f data/jurassicadventure/forge/biome_modifier/add_amber_ore.json
+b7fb6b5be7e18b991c0218b7da8bf7a29796cdd7 data/jurassicadventure/worldgen/configured_feature/amber_ore.json
+121a1d6a11fc7bab9015d9d6385629a73e3a852f data/jurassicadventure/worldgen/placed_feature/ore_amber.json

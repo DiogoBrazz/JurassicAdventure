@@ -29,6 +29,7 @@ public class ModCreativeModeTabs {
                         //ITEMS
                         pOutput.accept(ModItems.JURASSIC_GUIDE.get());
                         pOutput.accept(ModItems.RAW_AMBER.get());
+                        pOutput.accept(ModItems.LUPA.get());
                         pOutput.accept(ModItems.SYRINGE.get());
                         pOutput.accept(ModItems.BROKEN_SYRINGE.get());
                         pOutput.accept(ModItems.FAILED_SYRINGE.get());
@@ -91,6 +92,7 @@ public class ModCreativeModeTabs {
 
                         //BLOCKS
                         pOutput.accept(ModBlocks.AMBER_ORE.get());
+                        pOutput.accept(ModBlocks.DEEPSLATE_AMBER_ORE.get());
                         pOutput.accept(ModBlocks.ELECTRIC_FENCE_PILLAR.get());
                         pOutput.accept(ModBlocks.ELECTRIC_FENCE_WIRE.get());
                         pOutput.accept(ModBlocks.GENERATOR.get());

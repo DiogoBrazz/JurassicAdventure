@@ -45,19 +45,24 @@ public static final ResourceLocation BRACHIOSAURUS = new ResourceLocation(Jurass
     @SuppressWarnings("removal")
 public static final ResourceLocation DIPLODOCUS = new ResourceLocation(JurassicAdventure.MODID, "diplodocus");
 
+
+//Aquáticos
+    @SuppressWarnings("removal")
+public static final ResourceLocation MOSASSAURO = new ResourceLocation(JurassicAdventure.MODID, "mosassauro");
+
     @SuppressWarnings("removal")
 public static final ResourceLocation MAMUTE = new ResourceLocation(JurassicAdventure.MODID, "mamute");
     // --- LISTA CENTRAL ---
     // Esta lista contém todas as constantes de dinossauros que definimos acima.
     public static final List<ResourceLocation> ALL_DINOS = List.of(
             REX, TRICERATOPS, VELOCIRAPTOR, CARNOTAURUS, SPINOSAURUS, ALLOSAURUS, YUTYRANNUS, DILOPHOSAURUS, MEGALANIA, DEINONYCHUS,
-            PARASAUROLOPHUS, STEGOSAURUS, ANKYLOSAURUS, GALLIMIMUS, PACHYCEPHALOSAURUS, BRACHIOSAURUS, DIPLODOCUS, MAMUTE
+            PARASAUROLOPHUS, STEGOSAURUS, ANKYLOSAURUS, GALLIMIMUS, PACHYCEPHALOSAURUS, BRACHIOSAURUS, DIPLODOCUS, MOSASSAURO, MAMUTE
             // Se você adicionar um novo dino acima, adicione-o aqui também!
     );
 
     public static final List<ResourceLocation> OVIPAROUS_DINOS = List.of(
             REX, TRICERATOPS, VELOCIRAPTOR, CARNOTAURUS, SPINOSAURUS, ALLOSAURUS, YUTYRANNUS, DILOPHOSAURUS, MEGALANIA, DEINONYCHUS,
-            PARASAUROLOPHUS, STEGOSAURUS, ANKYLOSAURUS, GALLIMIMUS, PACHYCEPHALOSAURUS, BRACHIOSAURUS, DIPLODOCUS
+            PARASAUROLOPHUS, STEGOSAURUS, ANKYLOSAURUS, GALLIMIMUS, PACHYCEPHALOSAURUS, BRACHIOSAURUS, DIPLODOCUS, MOSASSAURO
     );
 
     public static final List<ResourceLocation> MAMIFEROS_DINOS = List.of(

@@ -18,10 +18,11 @@ import org.jetbrains.annotations.Nullable;
 public class ElectricFenceBlockEntity extends BlockEntity {
     private final CustomEnergyStorage energyStorage;
     private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
-
+    private int tickCounter = 0;
     // Balanceamento da Cerca
     private static final int CAPACITY = 128;      
     private static final int TRANSFER_RATE = 32; // Transfere energia mais lentamente que os cabos
+    private static final int ENERGY_COST_PER_SECOND = 1;
 
     public ElectricFenceBlockEntity(BlockPos pPos, BlockState pState) {
         super(ModBlockEntities.ELECTRIC_FENCE_BE.get(), pPos, pState);
@@ -30,6 +31,20 @@ public class ElectricFenceBlockEntity extends BlockEntity {
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, ElectricFenceBlockEntity pBlockEntity) {
         if (pLevel.isClientSide()) return;
+
+        // --- NOVA LÓGICA DE CUSTO DE ENERGIA ---
+        pBlockEntity.tickCounter++;
+        if (pBlockEntity.tickCounter >= 20) { // A cada 20 ticks (1 segundo)
+            pBlockEntity.tickCounter = 0;
+
+            // Se tiver energia, gasta a energia de manutenção
+            if (pBlockEntity.energyStorage.getEnergyStored() > 0) {
+                pBlockEntity.energyStorage.extractEnergy(ENERGY_COST_PER_SECOND, false);
+            }
+        }
+        // -----------------------------------------
+
+        // A lógica de distribuição continua a mesma, mas agora com a energia já gasta
         if (pBlockEntity.energyStorage.getEnergyStored() > 0) {
             pBlockEntity.distributeEnergy();
         }
