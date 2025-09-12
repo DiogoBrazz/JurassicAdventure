@@ -61,7 +61,7 @@ public class ModBlocks {
                         () -> new IncubatorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                                         .requiresCorrectToolForDrops()));
 
-        public static final RegistryObject<Block> ELECTRIC_FENCE_PILLAR = registerBlock("electric_fence_pillar",
+        public static final RegistryObject<Block> ELECTRIC_PILLAR = registerBlock("electric_pillar",
         () -> new ElectricFencePillarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
         public static final RegistryObject<Block> ELECTRIC_FENCE_WIRE = registerBlock("electric_fence_wire",

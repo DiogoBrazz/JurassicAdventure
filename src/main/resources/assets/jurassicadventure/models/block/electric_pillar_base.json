@@ -4,8 +4,8 @@
 	"parent": "minecraft:block/block",
 	"texture_size": [128, 128],
 	"textures": {
-		"0": "block/texture",
-		"particle": "block/texture"
+		"0": "jurassicadventure:block/electric_fence_wire",
+		"particle": "jurassicadventure:block/electric_fence_wire"
 	},
 	"elements": [
 		{

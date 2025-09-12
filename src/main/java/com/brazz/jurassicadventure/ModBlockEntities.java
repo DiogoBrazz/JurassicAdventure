@@ -83,7 +83,7 @@ public class ModBlockEntities {
                         .register("electric_fence_be", 
                                         () -> BlockEntityType.Builder
                                                         .<ElectricFenceBlockEntity>of(ElectricFenceBlockEntity::new,
-                                                                ModBlocks.ELECTRIC_FENCE_PILLAR.get(),
+                                                                ModBlocks.ELECTRIC_PILLAR.get(),
                                                                 ModBlocks.ELECTRIC_FENCE_WIRE.get())
                                                         .build(null));
 

@@ -2,73 +2,34 @@
 	"format_version": "1.21.6",
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
-	"texture_size": [64, 64],
+	"texture_size": [32, 32],
 	"textures": {
-		"0": "block/texture",
-		"particle": "block/texture"
+		"0": "jurassicadventure:block/electric_fence_wire",
+		"particle": "jurassicadventure:block/electric_fence_wire"
 	},
 	"elements": [
-		{
-			"from": [3, 0, 3],
-			"to": [13, 12, 13],
-			"rotation": {"angle": 0, "axis": "y", "origin": [2, 0, 2]},
-			"faces": {
-				"north": {"uv": [2.5, 2.5, 5, 5.5], "texture": "#0"},
-				"east": {"uv": [0, 2.5, 2.5, 5.5], "texture": "#0"},
-				"south": {"uv": [7.5, 2.5, 10, 5.5], "texture": "#0"},
-				"west": {"uv": [5, 2.5, 7.5, 5.5], "texture": "#0"},
-				"up": {"uv": [5, 2.5, 2.5, 0], "texture": "#0"},
-				"down": {"uv": [7.5, 0, 5, 2.5], "texture": "#0"}
-			}
-		},
-		{
-			"from": [4, 12, 4],
-			"to": [12, 14, 12],
-			"rotation": {"angle": 0, "axis": "y", "origin": [2, 0, 2]},
-			"faces": {
-				"north": {"uv": [2, 7.5, 4, 8], "texture": "#0"},
-				"east": {"uv": [0, 7.5, 2, 8], "texture": "#0"},
-				"south": {"uv": [6, 7.5, 8, 8], "texture": "#0"},
-				"west": {"uv": [4, 7.5, 6, 8], "texture": "#0"},
-				"up": {"uv": [4, 7.5, 2, 5.5], "texture": "#0"},
-				"down": {"uv": [6, 5.5, 4, 7.5], "texture": "#0"}
-			}
-		},
-		{
-			"from": [6, 12, 6],
-			"to": [10, 16, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [2, 0, 2]},
-			"faces": {
-				"north": {"uv": [9, 6.5, 10, 7.5], "texture": "#0"},
-				"east": {"uv": [8, 6.5, 9, 7.5], "texture": "#0"},
-				"south": {"uv": [11, 6.5, 12, 7.5], "texture": "#0"},
-				"west": {"uv": [10, 6.5, 11, 7.5], "texture": "#0"},
-				"up": {"uv": [10, 6.5, 9, 5.5], "texture": "#0"},
-				"down": {"uv": [11, 5.5, 10, 6.5], "texture": "#0"}
-			}
-		},
 		{
 			"from": [5, 5, -1],
 			"to": [11, 11, 2],
 			"faces": {
-				"north": {"uv": [0.75, 8.75, 2.25, 10.25], "texture": "#0"},
-				"east": {"uv": [0, 8.75, 0.75, 10.25], "texture": "#0"},
-				"south": {"uv": [3, 8.75, 4.5, 10.25], "texture": "#0"},
-				"west": {"uv": [2.25, 8.75, 3, 10.25], "texture": "#0"},
-				"up": {"uv": [2.25, 8.75, 0.75, 8], "texture": "#0"},
-				"down": {"uv": [3.75, 8, 2.25, 8.75], "texture": "#0"}
+				"north": {"uv": [1.5, 1.5, 4.5, 4.5], "texture": "#0"},
+				"east": {"uv": [0, 1.5, 1.5, 4.5], "texture": "#0"},
+				"south": {"uv": [6, 1.5, 9, 4.5], "texture": "#0"},
+				"west": {"uv": [4.5, 1.5, 6, 4.5], "texture": "#0"},
+				"up": {"uv": [4.5, 1.5, 1.5, 0], "texture": "#0"},
+				"down": {"uv": [7.5, 0, 4.5, 1.5], "texture": "#0"}
 			}
 		},
 		{
 			"from": [4, 4, 2],
 			"to": [12, 12, 3],
 			"faces": {
-				"north": {"uv": [4.75, 8.25, 6.75, 10.25], "texture": "#0"},
-				"east": {"uv": [4.5, 8.25, 4.75, 10.25], "texture": "#0"},
-				"south": {"uv": [7, 8.25, 9, 10.25], "texture": "#0"},
-				"west": {"uv": [6.75, 8.25, 7, 10.25], "texture": "#0"},
-				"up": {"uv": [6.75, 8.25, 4.75, 8], "texture": "#0"},
-				"down": {"uv": [8.75, 8, 6.75, 8.25], "texture": "#0"}
+				"north": {"uv": [0.5, 5, 4.5, 9], "texture": "#0"},
+				"east": {"uv": [0, 5, 0.5, 9], "texture": "#0"},
+				"south": {"uv": [5, 5, 9, 9], "texture": "#0"},
+				"west": {"uv": [4.5, 5, 5, 9], "texture": "#0"},
+				"up": {"uv": [4.5, 5, 0.5, 4.5], "texture": "#0"},
+				"down": {"uv": [8.5, 4.5, 4.5, 5], "texture": "#0"}
 			}
 		}
 	],
@@ -77,13 +38,13 @@
 			"name": "Pillar",
 			"origin": [8, 8, 8],
 			"color": 0,
-			"children": [0, 1, 2]
+			"children": []
 		},
 		{
 			"name": "energy",
 			"origin": [8, 8, 8],
 			"color": 0,
-			"children": [3, 4]
+			"children": [0, 1]
 		}
 	]
 }

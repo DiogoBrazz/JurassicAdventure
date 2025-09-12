@@ -1,0 +1,43 @@
+{
+  "multipart": [
+    { "when": { "down": "false" }, "apply": { "model": "jurassicadventure:block/electric_pillar_base" } },
+    { "when": { "up": "true", "down": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_middle" } },
+    { "when": { "up": "false", "down": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_top" } },
+
+
+    { "when": { "down": "false", "north_cable": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_base_side_energy", "y": 0 } },
+    { "when": { "down": "false", "east_cable": "true" },  "apply": { "model": "jurassicadventure:block/electric_pillar_base_side_energy", "y": 90 } },
+    { "when": { "down": "false", "south_cable": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_base_side_energy", "y": 180 } },
+    { "when": { "down": "false", "west_cable": "true" },  "apply": { "model": "jurassicadventure:block/electric_pillar_base_side_energy", "y": 270 } },
+
+
+    { "when": { "down": "false", "north_cable": "false", "north_fence": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_base_side", "y": 0 } },
+    { "when": { "down": "false", "east_cable": "false",  "east_fence": "true"  }, "apply": { "model": "jurassicadventure:block/electric_pillar_base_side", "y": 90 } },
+    { "when": { "down": "false", "south_cable": "false", "south_fence": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_base_side", "y": 180 } },
+    { "when": { "down": "false", "west_cable": "false",  "west_fence": "true"  }, "apply": { "model": "jurassicadventure:block/electric_pillar_base_side", "y": 270 } },
+
+
+    { "when": { "up": "true", "down": "true", "north_cable": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_middle_side_energy", "y": 0 } },
+    { "when": { "up": "true", "down": "true", "east_cable": "true"  }, "apply": { "model": "jurassicadventure:block/electric_pillar_middle_side_energy", "y": 90 } },
+    { "when": { "up": "true", "down": "true", "south_cable": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_middle_side_energy", "y": 180 } },
+    { "when": { "up": "true", "down": "true", "west_cable": "true"  }, "apply": { "model": "jurassicadventure:block/electric_pillar_middle_side_energy", "y": 270 } },
+
+
+    { "when": { "up": "true", "down": "true", "north_cable": "false", "north_fence": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_middle_side", "y": 0 } },
+    { "when": { "up": "true", "down": "true", "east_cable": "false",  "east_fence": "true"  }, "apply": { "model": "jurassicadventure:block/electric_pillar_middle_side", "y": 90 } },
+    { "when": { "up": "true", "down": "true", "south_cable": "false", "south_fence": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_middle_side", "y": 180 } },
+    { "when": { "up": "true", "down": "true", "west_cable": "false",  "west_fence": "true"  }, "apply": { "model": "jurassicadventure:block/electric_pillar_middle_side", "y": 270 } },
+
+ 
+    { "when": { "up": "false", "down": "true", "north_cable": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_top_side_energy", "y": 0 } },
+    { "when": { "up": "false", "down": "true", "east_cable": "true"  }, "apply": { "model": "jurassicadventure:block/electric_pillar_top_side_energy", "y": 90 } },
+    { "when": { "up": "false", "down": "true", "south_cable": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_top_side_energy", "y": 180 } },
+    { "when": { "up": "false", "down": "true", "west_cable": "true"  }, "apply": { "model": "jurassicadventure:block/electric_pillar_top_side_energy", "y": 270 } },
+
+
+    { "when": { "up": "false", "down": "true", "north_cable": "false", "north_fence": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_top_side", "y": 0 } },
+    { "when": { "up": "false", "down": "true", "east_cable": "false",  "east_fence": "true"  }, "apply": { "model": "jurassicadventure:block/electric_pillar_top_side", "y": 90 } },
+    { "when": { "up": "false", "down": "true", "south_cable": "false", "south_fence": "true" }, "apply": { "model": "jurassicadventure:block/electric_pillar_top_side", "y": 180 } },
+    { "when": { "up": "false", "down": "true", "west_cable": "false",  "west_fence": "true"  }, "apply": { "model": "jurassicadventure:block/electric_pillar_top_side", "y": 270 } }
+  ]
+}

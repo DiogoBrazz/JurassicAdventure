@@ -98,7 +98,7 @@ public class ModCreativeModeTabs {
                         //BLOCKS
                         pOutput.accept(ModBlocks.AMBER_ORE.get());
                         pOutput.accept(ModBlocks.DEEPSLATE_AMBER_ORE.get());
-                        pOutput.accept(ModBlocks.ELECTRIC_FENCE_PILLAR.get());
+                        pOutput.accept(ModBlocks.ELECTRIC_PILLAR.get());
                         pOutput.accept(ModBlocks.ELECTRIC_FENCE_WIRE.get());
                         pOutput.accept(ModBlocks.GENERATOR.get());
                         pOutput.accept(ModBlocks.CABLE.get());
