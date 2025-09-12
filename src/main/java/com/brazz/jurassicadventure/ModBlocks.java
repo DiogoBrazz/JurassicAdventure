@@ -41,10 +41,10 @@ public class ModBlocks {
                                         .requiresCorrectToolForDrops()));
         public static final RegistryObject<Block> CABLE = registerBlock("cable",
                         () -> new CableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                                        .requiresCorrectToolForDrops()));
+                                        .requiresCorrectToolForDrops().noOcclusion()));
         public static final RegistryObject<Block> ANALYZER = registerBlock("analyzer",
                         () -> new AnalyzerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                                        .requiresCorrectToolForDrops()));
+                                        .requiresCorrectToolForDrops().noOcclusion()));
         public static final RegistryObject<Block> SEQUENCER = registerBlock("sequencer",
                         () -> new SequencerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                                         .requiresCorrectToolForDrops()));
