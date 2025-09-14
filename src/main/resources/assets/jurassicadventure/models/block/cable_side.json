@@ -1,6 +1,6 @@
 {
 	"textures": {
-		"all": "jurassicadventure:block/cable"
+		"all": "jurassicadventure:block/machines/cable"
 	},
 	"elements": [
 		{

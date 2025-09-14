@@ -4,8 +4,8 @@
 	"parent": "sequencer",
 	"texture_size": [128, 128],
 	"textures": {
-		"0": "jurassicadventure:block/sequencer",
-		"particle": "jurassicadventure:block/sequencer"
+		"0": "jurassicadventure:block/machines/sequencer",
+		"particle": "jurassicadventure:block/machines/sequencer"
 	},
 	"elements": [
 		{

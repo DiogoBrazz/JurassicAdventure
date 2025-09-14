@@ -29,43 +29,34 @@ public class ModBlocks {
 
         // --- BLOCOS ---
         public static final RegistryObject<Block> AMBER_ORE = registerBlock("amber_ore",
-                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)));
-
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE).requiresCorrectToolForDrops()));
         public static final RegistryObject<Block> DEEPSLATE_AMBER_ORE = registerBlock("deepslate_amber_ore",
-                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)));
+                        () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE).requiresCorrectToolForDrops()));
 
         // --- MÁQUINAS ---
 
         public static final RegistryObject<Block> GENERATOR = registerBlock("generator",
-                        () -> new GeneratorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                                        .requiresCorrectToolForDrops()));
+                        () -> new GeneratorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
         public static final RegistryObject<Block> CABLE = registerBlock("cable",
-                        () -> new CableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                                        .requiresCorrectToolForDrops().noOcclusion()));
+                        () -> new CableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
         public static final RegistryObject<Block> ANALYZER = registerBlock("analyzer",
-                        () -> new AnalyzerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                                        .requiresCorrectToolForDrops().noOcclusion()));
+                        () -> new AnalyzerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops().noOcclusion()));
         public static final RegistryObject<Block> SEQUENCER = registerBlock("sequencer",
-                        () -> new SequencerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                                        .requiresCorrectToolForDrops()));
+                        () -> new SequencerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
         public static final RegistryObject<Block> ASSEMBLER = registerBlock("assembler",
-                        () -> new AssemblerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                                        .requiresCorrectToolForDrops()));
+                        () -> new AssemblerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
         public static final RegistryObject<Block> INJECTOR = registerBlock("injector",
-                        () -> new InjectorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                                        .requiresCorrectToolForDrops()));
+                        () -> new InjectorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
         public static final RegistryObject<Block> MIXER = registerBlock("mixer",
-                        () -> new MixerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                                        .requiresCorrectToolForDrops()));
+                        () -> new MixerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
         public static final RegistryObject<Block> INCUBATOR = registerBlock("incubator",
-                        () -> new IncubatorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                                        .requiresCorrectToolForDrops()));
+                        () -> new IncubatorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()));
 
         public static final RegistryObject<Block> ELECTRIC_PILLAR = registerBlock("electric_pillar",
-        () -> new ElectricFencePillarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+                        () -> new ElectricFencePillarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
 
         public static final RegistryObject<Block> ELECTRIC_FENCE_WIRE = registerBlock("electric_fence_wire",
-        () -> new ElectricFenceWireBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS).noOcclusion()));
+                        () -> new ElectricFenceWireBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS).noOcclusion().requiresCorrectToolForDrops()));
 
         // --- MÉTODO AUXILIAR SIMPLIFICADO ---
         private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

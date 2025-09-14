@@ -1,52 +1,13 @@
 {
   "multipart": [
-    {
-      "when": { "up": "true" },
-      "apply": { "model": "jurassicadventure:block/electric_fence_post" }
-    },
-    
- 
-    {
-      "when": { "north": "true", "south": "true" },
-      "apply": { 
-        "model": "jurassicadventure:block/electric_fence_middle",
-        "y": 90
-      }
-    },
-    
+    { "when": { "post": "true" }, "apply": { "model": "jurassicadventure:block/electric_fence_post" } },
 
-    {
-      "when": { "east": "true", "west": "true" },
-      "apply": {
-        "model": "jurassicadventure:block/electric_fence_middle"
-      }
-    },
-    
-  
-    {
-      "when": { "north": "true", "south": "false" },
-      "apply": { "model": "jurassicadventure:block/electric_fence_side" }
-    },
-    {
-      "when": { "south": "true", "north": "false" },
-      "apply": {
-        "model": "jurassicadventure:block/electric_fence_side",
-        "y": 180
-      }
-    },
-    {
-      "when": { "east": "true", "west": "false" },
-      "apply": {
-        "model": "jurassicadventure:block/electric_fence_side",
-        "y": 90
-      }
-    },
-    {
-      "when": { "west": "true", "east": "false" },
-      "apply": {
-        "model": "jurassicadventure:block/electric_fence_side",
-        "y": 270
-      }
-    }
+    { "when": { "post": "false", "north": "true", "south": "true" }, "apply": { "model": "jurassicadventure:block/electric_fence_middle", "y": 90 } },
+    { "when": { "post": "false", "east": "true", "west": "true" },   "apply": { "model": "jurassicadventure:block/electric_fence_middle" } },
+
+    { "when": { "post": "true", "north": "true" }, "apply": { "model": "jurassicadventure:block/electric_fence_side" } },
+    { "when": { "post": "true", "south": "true" }, "apply": { "model": "jurassicadventure:block/electric_fence_side", "y": 180 } },
+    { "when": { "post": "true", "east": "true" },  "apply": { "model": "jurassicadventure:block/electric_fence_side", "y": 90 } },
+    { "when": { "post": "true", "west": "true" },  "apply": { "model": "jurassicadventure:block/electric_fence_side", "y": 270 } }
   ]
 }

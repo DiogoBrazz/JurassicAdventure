@@ -2,8 +2,14 @@
   "replace": false,
   "values": [
     "jurassicadventure:amber_ore",
+    "jurassicadventure:deepslate_amber_ore",
     "jurassicadventure:analyzer",
     "jurassicadventure:sequencer",
-    "jurassicadventure:assembler"
+    "jurassicadventure:assembler",
+    "jurassicadventure:mixer",
+    "jurassicadventure:injector",
+    "jurassicadventure:incubator",
+    "jurassicadventure:electric_pillar",
+    "jurassicadventure:electric_fence_wire"
   ]
 }

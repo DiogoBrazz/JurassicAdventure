@@ -23,13 +23,12 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import org.jetbrains.annotations.Nullable;
 
 public class ElectricFenceWireBlock extends BaseEntityBlock {
 
     // --- PROPRIEDADES DE CONEXÃO (igual aos muros de pedra) ---
-    public static final BooleanProperty UP = BooleanProperty.create("up");
+    public static final BooleanProperty POST_WALL = BooleanProperty.create("post");
     public static final BooleanProperty NORTH_WALL = BooleanProperty.create("north");
     public static final BooleanProperty SOUTH_WALL = BooleanProperty.create("south");
     public static final BooleanProperty WEST_WALL = BooleanProperty.create("west");
@@ -45,7 +44,7 @@ public class ElectricFenceWireBlock extends BaseEntityBlock {
     public ElectricFenceWireBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any()
-                .setValue(UP, true)
+                .setValue(POST_WALL, true)
                 .setValue(NORTH_WALL, false)
                 .setValue(SOUTH_WALL, false)
                 .setValue(WEST_WALL, false)
@@ -93,48 +92,45 @@ public class ElectricFenceWireBlock extends BaseEntityBlock {
         boolean west  = shouldConnectTo(level, pos.west(), Direction.EAST);
         boolean east  = shouldConnectTo(level, pos.east(), Direction.WEST);
 
-        // Conexão reta (sem pilar)
         boolean straightNS = north && south && !east && !west;
         boolean straightEW = east && west && !north && !south;
 
-        // Se for reta pura, tira o post. Se tiver 3 lados (como b, f, h, d), mantém o post.
-        boolean up = !(straightNS || straightEW);
+        // Post em todos os casos, menos nas retas puras
+        boolean post = !(straightNS || straightEW);
 
-        return level.getBlockState(pos).getBlock() == this
-                ? level.getBlockState(pos)
-                    .setValue(UP, up)
-                    .setValue(NORTH_WALL, north)
-                    .setValue(SOUTH_WALL, south)
-                    .setValue(WEST_WALL, west)
-                    .setValue(EAST_WALL, east)
-                : this.defaultBlockState()
-                    .setValue(UP, up)
-                    .setValue(NORTH_WALL, north)
-                    .setValue(SOUTH_WALL, south)
-                    .setValue(WEST_WALL, west)
-                    .setValue(EAST_WALL, east);
+        // Retorna o estado atual atualizado (mantendo o state atual se o bloco já é este)
+        BlockState current = level.getBlockState(pos);
+        BlockState target = (current.getBlock() == this ? current : this.defaultBlockState())
+                .setValue(POST_WALL, post)
+                .setValue(NORTH_WALL, north)
+                .setValue(SOUTH_WALL, south)
+                .setValue(WEST_WALL, west)
+                .setValue(EAST_WALL, east);
+
+        return target;
     }
+
 
     private boolean shouldConnectTo(LevelAccessor level, BlockPos pos, Direction direction) {
         BlockState state = level.getBlockState(pos);
-        BlockEntity be = level.getBlockEntity(pos);
-        
-        // Conecta com blocos do mesmo tipo
-        if (state.is(this)) {
+
+        // Conecta com outros fios de cerca
+        if (state.getBlock() instanceof ElectricFenceWireBlock) {
             return true;
         }
-        
-        // Conecta com blocos que têm capacidade de energia
-        if (be != null && be.getCapability(ForgeCapabilities.ENERGY).isPresent()) {
+
+        // Conecta com pilares da cerca
+        if (state.getBlock() instanceof ElectricFencePillarBlock) {
             return true;
         }
-        
+
         return false;
     }
+
     
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(UP, NORTH_WALL, SOUTH_WALL, WEST_WALL, EAST_WALL);
+        pBuilder.add(POST_WALL, NORTH_WALL, SOUTH_WALL, WEST_WALL, EAST_WALL);
     }
 
     // --- LÓGICA DE DANO (CHOQUE) ---

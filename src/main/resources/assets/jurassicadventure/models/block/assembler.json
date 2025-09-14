@@ -4,8 +4,8 @@
 	"parent": "assembler",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "jurassicadventure:block/assembler",
-		"particle": "jurassicadventure:block/assembler"
+		"0": "jurassicadventure:block/machines/assembler",
+		"particle": "jurassicadventure:block/machines/assembler"
 	},
 	"elements": [
 		{

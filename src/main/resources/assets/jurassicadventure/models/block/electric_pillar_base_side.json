@@ -3,8 +3,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"textures": {
-		"0": "jurassicadventure:block/electric_fence_wire",
-		"particle": "jurassicadventure:block/electric_fence_wire"
+		"0": "jurassicadventure:block/machines/electric_fence_wire",
+		"particle": "jurassicadventure:block/machines/electric_fence_wire"
 	},
 	"elements": [
 		{

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "jurassicadventure:block/machines/mixer_top",
+    "front": "jurassicadventure:block/machines/mixer_front",
+    "side": "jurassicadventure:block/machines/mixer_side"
+  }
+}

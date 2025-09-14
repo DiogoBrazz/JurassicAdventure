@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"all": "jurassicadventure:block/cable",
-		"particle": "jurassicadventure:block/cable"
+		"all": "jurassicadventure:block/machines/cable",
+		"particle": "jurassicadventure:block/machines/cable"
 	},
 	"elements": [
 		{
