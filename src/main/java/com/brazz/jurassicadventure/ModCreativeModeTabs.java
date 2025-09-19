@@ -76,6 +76,11 @@ public class ModCreativeModeTabs {
                             pOutput.accept(dinosaurEgg);
                         }
 
+                        pOutput.accept(ModItems.BASIC_CHIP.get());
+                        pOutput.accept(ModItems.ADVANCED_CHIP.get());
+                        pOutput.accept(ModItems.IRON_WIRE.get());
+                        pOutput.accept(ModItems.GOLD_WIRE.get());
+
                         // COMIDAS
                         pOutput.accept(ModItems.FROG_MEAT.get());
                         pOutput.accept(ModItems.COOKED_FROG_MEAT.get());
@@ -209,6 +214,10 @@ public class ModCreativeModeTabs {
                     .icon(() -> new ItemStack(ModBlocks.ANALYZER.get()))
                     .title(Component.translatable("creativetab.jurassic_machines_tab"))
                     .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModItems.BASIC_CHIP.get());
+                        pOutput.accept(ModItems.ADVANCED_CHIP.get());
+                        pOutput.accept(ModItems.IRON_WIRE.get());
+                        pOutput.accept(ModItems.GOLD_WIRE.get());
                         pOutput.accept(ModBlocks.GENERATOR.get());
                         pOutput.accept(ModBlocks.CABLE.get());
                         pOutput.accept(ModBlocks.ANALYZER.get());
@@ -227,7 +236,7 @@ public class ModCreativeModeTabs {
     // ABA DE COMIDAS
     public static final RegistryObject<CreativeModeTab> JURASSIC_FOODS_TAB = CREATIVE_MODE_TABS.register("jurassic_foods_tab",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModItems.COOKED_REX_MEAT.get()))
+                    .icon(() -> new ItemStack(ModItems.REX_MEAT.get()))
                     .title(Component.translatable("creativetab.jurassic_foods_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.FROG_MEAT.get());

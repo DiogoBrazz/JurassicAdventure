@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "jurassicadventure:block/machines/injector_top",
+    "front": "jurassicadventure:block/machines/injector_front",
+    "side": "jurassicadventure:block/machines/injector_side"
+  }
+}

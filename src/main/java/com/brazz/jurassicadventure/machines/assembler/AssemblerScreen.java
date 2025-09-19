@@ -31,7 +31,7 @@ public class AssemblerScreen extends AllSettingsScreen<AssemblerMenu> {
         // A sua lógica para desenhar a barra de progresso do Assembler.
         if(menu.isCrafting()) {
             // Os valores aqui (114, 13, etc.) são únicos para a sua textura do assembler_gui.png
-            guiGraphics.blit(TEXTURE, x + 114, y + 13, 176, 0, menu.getScaledProgress(), 12);
+            guiGraphics.blit(TEXTURE, x + 34, y + 7, 176, 0, menu.getScaledProgress(), 12);
         }
     }
 }

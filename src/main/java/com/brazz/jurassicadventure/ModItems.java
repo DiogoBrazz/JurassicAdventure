@@ -69,6 +69,18 @@ public class ModItems {
     public static final RegistryObject<Item> JURASSIC_GUIDE = ITEMS.register("jurassic_guide",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> BASIC_CHIP = ITEMS.register("basic_chip",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ADVANCED_CHIP = ITEMS.register("advanced_chip",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> IRON_WIRE = ITEMS.register("iron_wire",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GOLD_WIRE = ITEMS.register("gold_wire",
+            () -> new Item(new Item.Properties()));
+
     // ==================================================
     // ======== COMIDAS =================================
     // ==================================================

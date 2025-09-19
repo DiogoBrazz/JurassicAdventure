@@ -46,39 +46,39 @@ public class AssemblerMenu extends AllSettingsMenu {
         addPlayerHotbar(inv);
 
         // --- Configuração dos Slots ---
-        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 0, 11, 30){
+        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 0, 11, 40){
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.getItem() == ModItems.PARTIAL_GENOME_TUBE.get();
             }
         });
-        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 1, 30, 11){
+        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 1, 30, 21){
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.getItem() == ModItems.PARTIAL_GENOME_TUBE.get();
             }
         });
-        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 2, 49, 30){
+        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 2, 49, 40){
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.getItem() == ModItems.PARTIAL_GENOME_TUBE.get();
             }
         });
-        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 3, 30, 49){
+        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 3, 30, 59){
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.getItem() == ModItems.PARTIAL_GENOME_TUBE.get();
             }
         });
 
-        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 4, 82, 30){
+        this.addSlot(new SlotItemHandler(this.blockEntity.getItemHandler(), 4, 98, 23){
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return stack.getItem() == ModItems.TUBE.get();
             }
         });
 
-        this.addSlot(new OutputSlot(this.blockEntity.getItemHandler(), 5, 132, 43));
+        this.addSlot(new OutputSlot(this.blockEntity.getItemHandler(), 5, 98, 57));
 
         addDataSlots(data);
     }
@@ -91,7 +91,7 @@ public class AssemblerMenu extends AllSettingsMenu {
     public int getScaledProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);
-        int progressArrowSize = 53; // Mude este valor para a largura da sua seta de progresso em pixels
+        int progressArrowSize = 76; // Mude este valor para a largura da sua seta de progresso em pixels
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 
